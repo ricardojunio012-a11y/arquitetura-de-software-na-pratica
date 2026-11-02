@@ -1,0 +1,11 @@
+C-01;emitir;emitida;A-101 R$ 666,88 vence 2026-02-10
+C-02;emitir;emitida;A-102 R$ 666,88 vence 2026-02-10
+C-03;emitir;emitida;B-101 R$ 586,85 vence 2026-02-10
+C-01;pagar;paga;em 2026-02-08
+C-03;parcelar;parcelada;3 parcelas
+R-01;reservar;confirmada;A-101 salao 2026-03-14
+R-02;reservar;recusada;unidade A-102 em débito
+R-03;reservar;recusada;unidade B-101 em débito
+C-02;pagar;paga;em 2026-03-03
+R-04;reservar;confirmada;A-102 churrasqueira 2026-03-10
+R-05;reservar;recusada;salao já reservado em 2026-03-14

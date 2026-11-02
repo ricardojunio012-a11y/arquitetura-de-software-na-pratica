@@ -1,0 +1,36 @@
+# Capítulo 14: arquitetura de testes.
+# A linguagem vem do arquivo .env (LINGUAGEM=node|php|python|java).
+services:
+  # O consumidor gera o contrato, o provedor o verifica; os testes de unidade,
+  # integração e ponta a ponta rodam aqui também
+  app:
+    build: ./${LINGUAGEM:-node}
+    # Uma imagem por linguagem: trocar o .env não reaproveita a imagem de outra
+    image: morada-cap14-${LINGUAGEM:-node}
+    environment:
+      BANCO_URL: postgresql://morada:morada@banco:5432/morada
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./saida:/dados/saida
+    depends_on:
+      banco:
+        condition: service_healthy
+
+  # Banco real em contêiner para os testes de integração e de ponta a ponta
+  banco:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap14
+    working_dir: /cap14

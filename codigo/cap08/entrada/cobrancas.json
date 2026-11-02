@@ -1,0 +1,10 @@
+{
+  "cobrancas": [
+    { "unidade": "A-101", "valorCentavos": 66688, "banco": "alfa" },
+    { "unidade": "A-102", "valorCentavos": 66688, "banco": "pagafacil" },
+    { "unidade": "A-201", "valorCentavos": 135218, "banco": "beta" },
+    { "unidade": "A-202", "valorCentavos": 66688, "banco": "alfa" },
+    { "unidade": "B-101", "valorCentavos": 58685, "banco": "caixa" },
+    { "unidade": "B-102", "valorCentavos": 120283, "banco": "beta" }
+  ]
+}

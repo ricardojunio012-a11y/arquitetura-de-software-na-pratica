@@ -1,0 +1,11 @@
+{
+    "name": "morada/cap03",
+    "description": "Capítulo 3: acoplamento e coesão",
+    "type": "project",
+    "require": {
+        "php": ">=8.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    }
+}

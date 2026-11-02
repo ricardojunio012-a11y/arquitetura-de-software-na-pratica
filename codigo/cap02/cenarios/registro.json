@@ -1,0 +1,13 @@
+{
+  "id": "DES-02",
+  "descricao": "Registro em lote dos boletos do dia 1º, com 30.000 condomínios",
+  "boletos": 1200000,
+  "boletosPorArquivo": 100000,
+  "registrosPorSegundo": 2000,
+  "retornoSegundos": 5400,
+  "falhaPassageiraPorCento": 5,
+  "recusaDefinitivaACada": 200,
+  "maxTentativas": 3,
+  "limiteSegundos": 14400,
+  "semente": 2026
+}

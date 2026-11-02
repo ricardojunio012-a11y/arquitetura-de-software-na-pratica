@@ -1,0 +1,22 @@
+# Capítulo 3: acoplamento, coesão e modularidade.
+# A linguagem vem do arquivo .env (LINGUAGEM=node|php|python|java).
+services:
+  # Roda a versão antes ou depois do financeiro, ou os testes da linguagem escolhida
+  app:
+    build: ./${LINGUAGEM:-node}
+    # Uma imagem por linguagem: trocar o .env não reaproveita a imagem de outra
+    image: morada-cap03-${LINGUAGEM:-node}
+    environment:
+      HOJE: ${HOJE:-2026-03-02}
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./saida:/dados/saida
+
+  # Compara a saída com o resultado aprovado e mede o acoplamento entre os módulos
+  ferramentas:
+    build: ./ferramentas
+    environment:
+      LINGUAGEM: ${LINGUAGEM:-node}
+    volumes:
+      - ./:/cap03
+    working_dir: /cap03

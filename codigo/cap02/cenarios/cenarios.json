@@ -1,0 +1,18 @@
+[
+  {
+    "id": "DES-01",
+    "descricao": "Boletos do mês disponíveis no dia 1º, com 300 condomínios (2026)",
+    "condominios": 300,
+    "unidadesPorCondominio": 40,
+    "registrosPorSegundo": 50,
+    "limiteSegundos": 14400
+  },
+  {
+    "id": "DES-02",
+    "descricao": "Boletos do mês disponíveis no dia 1º, com 30.000 condomínios (2029)",
+    "condominios": 30000,
+    "unidadesPorCondominio": 40,
+    "registrosPorSegundo": 50,
+    "limiteSegundos": 14400
+  }
+]

@@ -1,0 +1,52 @@
+# Capítulo 11: arquitetura orientada a eventos.
+# A linguagem vem do arquivo .env (LINGUAGEM=node|php|python|java).
+services:
+  # Roda as versões memoria, escrita-dupla e outbox, ou os testes
+  app:
+    build: ./${LINGUAGEM:-node}
+    # Uma imagem por linguagem: trocar o .env não reaproveita a imagem de outra
+    image: morada-cap11-${LINGUAGEM:-node}
+    environment:
+      BANCO_URL: postgresql://morada:morada@banco:5432/morada
+      BROKER_URL: amqp://morada:morada@broker:5672
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./saida:/dados/saida
+    depends_on:
+      banco:
+        condition: service_healthy
+      broker:
+        condition: service_healthy
+
+  # O Financeiro grava os pagamentos (e a tabela outbox) aqui
+  banco:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # O broker de mensagens: os eventos saem do Financeiro e chegam às filas
+  # de Reservas e de Comunicação
+  broker:
+    image: rabbitmq:4.0-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: morada
+      RABBITMQ_DEFAULT_PASS: morada
+    # Saudável quando a porta AMQP aceita conexões. (Rodar o rabbitmq-diagnostics
+    # aqui criaria o cookie do Erlang como root antes do servidor, e ele não sobe.)
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 5672"]
+      interval: 3s
+      retries: 40
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap11
+    working_dir: /cap11

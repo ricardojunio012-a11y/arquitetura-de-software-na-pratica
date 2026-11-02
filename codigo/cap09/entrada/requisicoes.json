@@ -1,0 +1,92 @@
+{
+  "requisicoes": [
+    {
+      "metodo": "GET",
+      "caminho": "/espacos"
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/reservas",
+      "corpo": {
+        "reserva": "R-01",
+        "unidade": "A-101",
+        "espaco": "salao",
+        "data": "2026-03-14",
+        "inicio": 14,
+        "fim": 22,
+        "em": "2026-03-02"
+      }
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/reservas",
+      "corpo": {
+        "reserva": "R-02",
+        "unidade": "A-202",
+        "espaco": "salao",
+        "data": "2026-03-14",
+        "inicio": 20,
+        "fim": 23,
+        "em": "2026-03-02"
+      }
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/reservas",
+      "corpo": {
+        "reserva": "R-03",
+        "espaco": "churrasqueira",
+        "data": "2026-03-10",
+        "inicio": 10,
+        "fim": 14,
+        "em": "2026-03-02"
+      }
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/reservas",
+      "corpo": {
+        "reserva": "R-04",
+        "unidade": "B-101",
+        "espaco": "churrasqueira",
+        "data": "2026-03-03",
+        "inicio": 10,
+        "fim": 14,
+        "em": "2026-03-03"
+      }
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/reservas",
+      "corpo": {
+        "reserva": "R-05",
+        "unidade": "B-202",
+        "espaco": "churrasqueira",
+        "data": "2026-03-10",
+        "inicio": 10,
+        "fim": 14,
+        "em": "2026-03-02"
+      }
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/espacos/salao/reservas"
+    },
+    {
+      "metodo": "DELETE",
+      "caminho": "/reservas/R-01?em=2026-03-13"
+    },
+    {
+      "metodo": "DELETE",
+      "caminho": "/reservas/R-99?em=2026-03-13"
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/espacos/piscina/reservas"
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/espacos/churrasqueira/reservas"
+    }
+  ]
+}

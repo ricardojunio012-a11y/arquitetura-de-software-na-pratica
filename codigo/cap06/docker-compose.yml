@@ -1,0 +1,23 @@
+# Capítulo 6: refatoração e código legado.
+# A linguagem vem do arquivo .env (LINGUAGEM=node|php|python|java).
+services:
+  # Roda uma etapa do módulo de reservas ou os testes da linguagem escolhida
+  app:
+    build: ./${LINGUAGEM:-node}
+    # Uma imagem por linguagem: trocar o .env não reaproveita a imagem de outra
+    image: morada-cap06-${LINGUAGEM:-node}
+    environment:
+      HOJE: ${HOJE:-2026-03-02}
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./esperado:/dados/esperado:ro
+      - ./saida:/dados/saida
+
+  # Compara a saída com o resultado aprovado e mede o tamanho de cada passo
+  ferramentas:
+    build: ./ferramentas
+    environment:
+      LINGUAGEM: ${LINGUAGEM:-node}
+    volumes:
+      - ./:/cap06
+    working_dir: /cap06

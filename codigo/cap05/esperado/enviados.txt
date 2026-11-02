@@ -1,0 +1,6 @@
+email ana.souza@example.com | Reserva confirmada: Salão de festas em 14/03/2026. Taxa de uso: R$ 150,00.
+whatsapp +5511987650001 | *Reserva recusada* Salão de festas em 14/03/2026: espaço já reservado nesta data.
+whatsapp +5511987650001 | *Reserva confirmada* Churrasqueira em 03/03/2026. Taxa de uso: R$ 50,00.
+email ana.souza@example.com | Reserva recusada: Salão de festas em 28/03/2026: limite de reservas do mês atingido.
+sms +5511987650002 | Morada: Reserva confirmada
+whatsapp +5511987650003 | *Reserva confirmada* Salão de festas em 21/03/2026. Taxa de uso: R$ 150,00.

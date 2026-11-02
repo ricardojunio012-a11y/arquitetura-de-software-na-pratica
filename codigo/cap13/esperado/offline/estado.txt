@@ -1,0 +1,5 @@
+E-01 A-101: entregue pelo tablet A às 09:10
+E-02 B-202: devolvida pelo tablet B às 09:20
+E-03 A-102: entregue pelo tablet B às 09:25
+Ana (R-01) entrou às 09:12 pelo tablet A
+operações repetidas ignoradas: 3

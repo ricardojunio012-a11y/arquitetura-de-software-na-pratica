@@ -1,0 +1,2 @@
+ReservaRecusada R-02: NotificarMorador: email falhou sem nova tentativa (destino inexistente)
+ReservaRecusada R-05: NotificarMorador: sms sem sucesso após 3 tentativas

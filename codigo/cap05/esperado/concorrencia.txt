@@ -1,0 +1,13 @@
+Pedidos simultâneos: Salão de festas em 28/03/2026
+verificar e depois gravar (check-then-act):
+  R-09 A-202: passou na cadeia
+  R-10 B-101: passou na cadeia
+  R-09 gravada
+  R-10 gravada
+  resultado: 2 reservas aprovadas (reserva dupla)
+gravar só se o espaço estiver livre, numa operação só:
+  R-09 A-202: passou na cadeia
+  R-10 B-101: passou na cadeia
+  R-09 gravada
+  R-10 recusada na gravação
+  resultado: 1 reserva aprovada

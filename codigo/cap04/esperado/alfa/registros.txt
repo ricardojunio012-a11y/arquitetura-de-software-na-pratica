@@ -1,0 +1,10 @@
+# Registros 03/2026 - Residencial Jardins - Banco Alfa
+unidade;identificador;valor;desconto
+A-101;boleto 0000001;666,88;30,31
+A-102;boleto 0000002;666,88;30,31
+A-201;boleto 0000003;1.352,18;0,00
+A-202;boleto 0000004;666,88;30,31
+B-101;boleto 0000005;586,85;26,68
+B-102;boleto 0000006;1.202,83;0,00
+B-201;boleto 0000007;67,90;0,00
+B-202;boleto 0000008;746,90;33,95

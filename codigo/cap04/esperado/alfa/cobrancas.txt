@@ -1,0 +1,58 @@
+# Cobranças 03/2026 - Residencial Jardins
+
+A-101 Ana Souza
+  Taxa condominial                            606,25
+  Fundo de reserva (10%)                       60,63
+  Desconto até 05/03 (5%)                     -30,31
+  Total                                       666,88
+  Total com desconto até 05/03                636,57
+
+A-102 Bruno Lima
+  Taxa condominial                            606,25
+  Fundo de reserva (10%)                       60,63
+  Desconto até 05/03 (5%)                     -30,31
+  Total                                       666,88
+  Total com desconto até 05/03                636,57
+
+A-201 Carla Mendes
+  Taxa condominial                            606,25
+  Fundo de reserva (10%)                       60,63
+  Débito anterior (venc. 10/02)               667,50
+  Multa (2%)                                   13,35
+  Juros (20 dias)                               4,45
+  Total                                     1.352,18
+
+A-202 Diego Rocha
+  Taxa condominial                            606,25
+  Fundo de reserva (10%)                       60,63
+  Desconto até 05/03 (5%)                     -30,31
+  Total                                       666,88
+  Total com desconto até 05/03                636,57
+
+B-101 Elisa Prado
+  Taxa condominial                            533,50
+  Fundo de reserva (10%)                       53,35
+  Desconto até 05/03 (5%)                     -26,68
+  Total                                       586,85
+  Total com desconto até 05/03                560,17
+
+B-102 Fábio Nunes
+  Taxa condominial                            533,50
+  Fundo de reserva (10%)                       53,35
+  Débito anterior (venc. 10/01)               594,00
+  Multa (2%)                                   11,88
+  Juros (51 dias)                              10,10
+  Total                                     1.202,83
+
+B-201 Gabriela Torres
+  Taxa condominial                            679,00
+  Fundo de reserva (10%)                       67,90
+  Isenção do síndico                         -679,00
+  Total                                        67,90
+
+B-202 Henrique Alves
+  Taxa condominial                            679,00
+  Fundo de reserva (10%)                       67,90
+  Desconto até 05/03 (5%)                     -33,95
+  Total                                       746,90
+  Total com desconto até 05/03                712,95

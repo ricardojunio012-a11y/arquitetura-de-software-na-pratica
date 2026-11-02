@@ -1,0 +1,3 @@
+envio de um aviso novo: verificada
+reenvio de um aviso já enviado: verificada
+aviso sem texto: verificada

@@ -1,0 +1,5 @@
+financeiro_app: tabela financeiro.cobrancas carregada
+reservas_app, atalho em financeiro.cobrancas: recusado pelo banco [42501] permission denied for table cobrancas
+reservas_app, API financeiro.unidade_em_dia(B-101): aceito ({"em_dia":true})
+reservas_app, criar tabela no esquema do Financeiro: recusado pelo banco [42501] permission denied for schema financeiro
+usuário único do monólito, mesmo atalho: aceito ({"n":"1"})

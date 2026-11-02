@@ -1,0 +1,6 @@
+R-01;A-101;salao;2026-03-14;confirmada
+R-02;A-102;churrasqueira;2026-03-10;confirmada
+R-03;B-101;salao;2026-03-21;confirmada
+A-101: pagamento P-01 de R$ 180,00 recebido; reserva R-01 confirmada
+A-102: pagamento P-02 de R$ 50,00 recebido; reserva R-02 confirmada
+B-101: pagamento P-03 de R$ 180,00 recebido; reserva R-03 confirmada

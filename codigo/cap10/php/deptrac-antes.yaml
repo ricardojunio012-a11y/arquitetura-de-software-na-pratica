@@ -1,0 +1,24 @@
+# Teste de arquitetura: as regras de fronteira entre os módulos do monólito.
+deptrac:
+  paths:
+    - ./src/antes
+  layers:
+    - name: Reservas
+      collectors:
+        - type: directory
+          value: src/antes/modulos/reservas/.*
+    - name: FinanceiroApi
+      collectors:
+        - type: directory
+          value: src/antes/modulos/financeiro/api.php
+    - name: FinanceiroInterno
+      collectors:
+        - type: directory
+          value: src/antes/modulos/financeiro/interno/.*
+  ruleset:
+    # Reservas só pode usar a API pública do Financeiro, nunca a tabela dele
+    Reservas:
+      - FinanceiroApi
+    FinanceiroApi:
+      - FinanceiroInterno
+    FinanceiroInterno: ~

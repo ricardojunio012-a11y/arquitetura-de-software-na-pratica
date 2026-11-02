@@ -1,0 +1,23 @@
+$ morada espacos
+salao: taxa R$ 150,00, antecedência de 2 dia(s)
+churrasqueira: taxa R$ 50,00, antecedência de 1 dia(s)
+$ morada reservar R-01 A-101 salao 2026-03-14 14 22 2026-03-02
+R-01 confirmada, taxa R$ 180,00
+$ morada reservar R-02 A-202 salao 2026-03-14 20 23 2026-03-02
+erro: horário sobreposto a R-01
+$ morada reservar R-03 salao 2026-03-20 10 12 2026-03-02
+uso: reservar <reserva> <unidade> <espaco> <data> <inicio> <fim> <hoje>
+$ morada reservar R-04 B-101 churrasqueira 2026-03-03 10 12 2026-03-03
+erro: antecedência mínima não respeitada
+$ morada reservar R-05 B-202 churrasqueira 2026-03-10 10 14 2026-03-03
+R-05 confirmada, taxa R$ 50,00
+$ morada reservas salao
+R-01 A-101 2026-03-14 14h-22h
+$ morada cancelar R-01 2026-03-13
+R-01 cancelada, multa R$ 90,00
+$ morada cancelar R-99 2026-03-13
+erro: reserva não encontrada
+$ morada reservas piscina
+erro: espaço não encontrado
+$ morada reservas churrasqueira
+R-05 B-202 2026-03-10 10h-14h

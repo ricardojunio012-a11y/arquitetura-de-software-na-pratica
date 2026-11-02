@@ -1,0 +1,8 @@
+para ana.souza@example.com: Reserva R-01 confirmada. Valor: R$ 180,00
+para carla.mendes@example.com: Reserva R-02 recusada (débito)
+para diego.rocha@example.com: Reserva R-03 recusada (conflito)
+para diego.rocha@example.com: Reserva R-04 recusada (antecedência)
+para elisa.prado@example.com: Reserva R-05 confirmada. Valor: R$ 100,00
+para henrique.alves@example.com: Reserva R-06 confirmada. Valor: R$ 200,00
+para ana.souza@example.com: Reserva R-07 confirmada. Valor: R$ 60,00
+para elisa.prado@example.com: Reserva R-08 recusada (conflito)

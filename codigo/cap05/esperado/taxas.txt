@@ -1,0 +1,4 @@
+A-101;Taxa de uso: Salão de festas em 14/03/2026;150,00
+A-202;Taxa de uso: Churrasqueira em 03/03/2026;50,00
+B-101;Taxa de uso: Churrasqueira em 07/03/2026;50,00
+B-202;Taxa de uso: Salão de festas em 21/03/2026;150,00

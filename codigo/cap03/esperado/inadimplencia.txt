@@ -1,0 +1,5 @@
+# Inadimplência 03/2026 - Residencial Jardins
+unidade;morador;dias;debito;multa;juros;atualizado
+A-201;Carla Mendes;20;667,50;13,35;4,45;685,30
+B-102;Fábio Nunes;51;594,00;11,88;10,10;615,98
+total;;;1.261,50;25,23;14,55;1.301,28

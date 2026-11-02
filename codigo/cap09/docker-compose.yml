@@ -1,0 +1,36 @@
+# Capítulo 9: arquitetura hexagonal.
+# A linguagem vem do arquivo .env (LINGUAGEM=node|php|python|java).
+services:
+  # O mesmo núcleo, acionado por HTTP ou pela linha de comando, com o repositório
+  # em memória ou no PostgreSQL
+  app:
+    build: ./${LINGUAGEM:-node}
+    # Uma imagem por linguagem: trocar o .env não reaproveita a imagem de outra
+    image: morada-cap09-${LINGUAGEM:-node}
+    environment:
+      BANCO_URL: postgresql://morada:morada@banco:5432/morada
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./saida:/dados/saida
+    depends_on:
+      banco:
+        condition: service_healthy
+
+  # O adaptador de saída PostgreSQL guarda as reservas aqui
+  banco:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap09
+    working_dir: /cap09

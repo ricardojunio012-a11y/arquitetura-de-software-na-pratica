@@ -1,0 +1,7 @@
+P-01 gravado com E-P-01 na outbox
+P-02 gravado com E-P-02 na outbox
+P-03 gravado com E-P-03 na outbox
+relay publicou E-P-01
+relay publicou E-P-02
+relay publicou E-P-03 e caiu antes de marcar
+relay publicou E-P-03

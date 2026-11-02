@@ -1,0 +1,37 @@
+# Capítulo 12: microsserviços, quando sim e quando não.
+# A linguagem vem do arquivo .env (LINGUAGEM=node|php|python|java).
+services:
+  # O monólito: envia os avisos pelo módulo de Comunicação, no mesmo processo
+  # (versão monolito) ou chamando o serviço de Comunicação pela rede (versão servico)
+  app:
+    build: ./${LINGUAGEM:-node}
+    # Uma imagem por linguagem: trocar o .env não reaproveita a imagem de outra
+    image: morada-cap12-${LINGUAGEM:-node}
+    environment:
+      COMUNICACAO_URL: http://comunicacao:8080
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./saida:/dados/saida
+    depends_on:
+      comunicacao:
+        condition: service_healthy
+
+  # O serviço de Comunicação, extraído do monólito. A mesma imagem, outro comando.
+  # Para o laboratório, ele falha de propósito em algumas chamadas (FALHAS=sim).
+  comunicacao:
+    build: ./${LINGUAGEM:-node}
+    image: morada-cap12-${LINGUAGEM:-node}
+    command: ["api"]
+    environment:
+      FALHAS: sim
+    healthcheck:
+      test: ["CMD", "sh", "rodar.sh", "saude"]
+      interval: 2s
+      retries: 30
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap12
+    working_dir: /cap12

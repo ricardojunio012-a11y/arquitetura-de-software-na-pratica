@@ -1,0 +1,18 @@
+# Capítulo 7: DDD tático.
+# A linguagem vem do arquivo .env (LINGUAGEM=node|php|python|java).
+services:
+  # Roda a versão antes (modelo anêmico) ou depois (modelo rico), ou os testes
+  app:
+    build: ./${LINGUAGEM:-node}
+    # Uma imagem por linguagem: trocar o .env não reaproveita a imagem de outra
+    image: morada-cap07-${LINGUAGEM:-node}
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./saida:/dados/saida
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap07
+    working_dir: /cap07

@@ -1,0 +1,124 @@
+{
+  "condominio": {
+    "id": "res-jardins",
+    "nome": "Residencial Jardins",
+    "despesasDoMesCentavos": 485000
+  },
+  "unidades": [
+    {
+      "id": "A-101",
+      "fracaoMilionesimos": 125000,
+      "morador": {
+        "nome": "Ana Souza",
+        "email": "ana.souza@example.com",
+        "canal": "email"
+      },
+      "meioPagamento": "boleto",
+      "debitoAnterior": null
+    },
+    {
+      "id": "A-102",
+      "fracaoMilionesimos": 125000,
+      "morador": {
+        "nome": "Bruno Lima",
+        "email": "bruno.lima@example.com",
+        "canal": "email"
+      },
+      "meioPagamento": "pix",
+      "debitoAnterior": null
+    },
+    {
+      "id": "A-201",
+      "fracaoMilionesimos": 125000,
+      "morador": {
+        "nome": "Carla Mendes",
+        "email": "carla.mendes@example.com",
+        "canal": "email"
+      },
+      "meioPagamento": "boleto",
+      "debitoAnterior": {
+        "valorCentavos": 66750,
+        "vencimento": "2026-02-10"
+      }
+    },
+    {
+      "id": "A-202",
+      "fracaoMilionesimos": 125000,
+      "morador": {
+        "nome": "Diego Rocha",
+        "email": "diego.rocha@example.com",
+        "telefone": "+5511987650001",
+        "canal": "whatsapp"
+      },
+      "meioPagamento": "pix",
+      "debitoAnterior": null
+    },
+    {
+      "id": "B-101",
+      "fracaoMilionesimos": 110000,
+      "morador": {
+        "nome": "Elisa Prado",
+        "email": "elisa.prado@example.com",
+        "canal": "email"
+      },
+      "meioPagamento": "boleto",
+      "debitoAnterior": null
+    },
+    {
+      "id": "B-102",
+      "fracaoMilionesimos": 110000,
+      "morador": {
+        "nome": "Fábio Nunes",
+        "email": "fabio.nunes@example.com",
+        "telefone": "+5511987650002",
+        "canal": "whatsapp"
+      },
+      "meioPagamento": "boleto",
+      "debitoAnterior": {
+        "valorCentavos": 59400,
+        "vencimento": "2026-01-10"
+      }
+    },
+    {
+      "id": "B-201",
+      "fracaoMilionesimos": 140000,
+      "morador": {
+        "nome": "Gabriela Torres",
+        "email": "gabriela.torres@example.com",
+        "canal": "email"
+      },
+      "meioPagamento": "boleto",
+      "debitoAnterior": null
+    },
+    {
+      "id": "B-202",
+      "fracaoMilionesimos": 140000,
+      "morador": {
+        "nome": "Henrique Alves",
+        "email": "henrique.alves@example.com",
+        "canal": "email"
+      },
+      "meioPagamento": "pix",
+      "debitoAnterior": null
+    }
+  ],
+  "despesas": [
+    {
+      "categoria": "Limpeza",
+      "valorCentavos": 120000
+    },
+    {
+      "categoria": "Portaria",
+      "valorCentavos": 210000
+    },
+    {
+      "categoria": "Energia e água",
+      "valorCentavos": 95000
+    },
+    {
+      "categoria": "Manutenção",
+      "valorCentavos": 60000
+    }
+  ],
+  "fundoDeReservaSaldoAnteriorCentavos": 1200000
+}

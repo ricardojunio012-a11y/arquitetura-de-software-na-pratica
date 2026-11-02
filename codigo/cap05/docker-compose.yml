@@ -1,0 +1,20 @@
+# Capítulo 5: padrões de projeto.
+# A linguagem vem do arquivo .env (LINGUAGEM=node|php|python|java).
+services:
+  # Processa os pedidos de reserva, ou roda os testes da linguagem escolhida
+  app:
+    build: ./${LINGUAGEM:-node}
+    # Uma imagem por linguagem: trocar o .env não reaproveita a imagem de outra
+    image: morada-cap05-${LINGUAGEM:-node}
+    environment:
+      HOJE: ${HOJE:-2026-03-02}
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./saida:/dados/saida
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap05
+    working_dir: /cap05

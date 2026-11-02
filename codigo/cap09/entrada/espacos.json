@@ -1,0 +1,14 @@
+{
+  "espacos": [
+    {
+      "id": "salao",
+      "taxaCentavos": 15000,
+      "antecedenciaMinimaDias": 2
+    },
+    {
+      "id": "churrasqueira",
+      "taxaCentavos": 5000,
+      "antecedenciaMinimaDias": 1
+    }
+  ]
+}

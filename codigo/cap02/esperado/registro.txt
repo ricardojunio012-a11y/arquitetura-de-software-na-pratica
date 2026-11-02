@@ -1,0 +1,16 @@
+DES-02: Registro em lote dos boletos do dia 1º, com 30.000 condomínios (semente 2026)
+  premissas: 1.200.000 boletos em arquivos de 100.000, 2.000 por segundo,
+  retorno 1 h 30 min depois de cada arquivo, 5% de recusa passageira, 1 em 200 definitiva
+  estimativa por divisão: 10 min  meta: todos em até 4 h
+ingênua:
+  arquivos: 36  tentativas de registro: 1.274.443
+  disponível em p50: 1 h 36 min  p95: 3 h 2 min  p99: 3 h 10 min  p99,9: nunca
+  última disponível: 4 h 40 min  sem registro: 6.142  com Pix: 0
+  em até 4 h: 1.190.981 (99,25%)
+  resultado: FALHOU
+ajustada:
+  arquivos: 24  tentativas de registro: 1.259.424
+  disponível em p50: 1 h 36 min  p95: 1 h 40 min  p99: 3 h 8 min  p99,9: 3 h 10 min
+  última disponível: 3 h 10 min  sem registro: 0  com Pix: 9.019
+  em até 4 h: 1.200.000 (100,00%)
+  resultado: PASSOU

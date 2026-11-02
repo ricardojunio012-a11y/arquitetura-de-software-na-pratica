@@ -1,0 +1,19 @@
+# Capítulo 13: front-end, mobile e Backend for Frontend.
+# A linguagem vem do arquivo .env (LINGUAGEM=node|php|python|java).
+services:
+  # Roda o dia na portaria com os tablets sempre conectados (online) ou com um
+  # tablet que perde a internet e sincroniza ao voltar (offline), ou os testes
+  app:
+    build: ./${LINGUAGEM:-node}
+    # Uma imagem por linguagem: trocar o .env não reaproveita a imagem de outra
+    image: morada-cap13-${LINGUAGEM:-node}
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./saida:/dados/saida
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap13
+    working_dir: /cap13

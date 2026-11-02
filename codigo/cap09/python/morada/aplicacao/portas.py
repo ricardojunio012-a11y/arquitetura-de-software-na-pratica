@@ -1,0 +1,26 @@
+# As portas do hexágono. Quem está dentro define as duas; quem está fora se adapta.
+from typing import Protocol
+
+from morada.dominio.agenda import Agenda
+
+
+# Porta de entrada: o que o sistema oferece, seja quem for que o acione
+class CasosDeUsoDeReservas(Protocol):
+    def listar_espacos(self) -> list[dict]: ...
+
+    def reservar(self, pedido: dict) -> dict: ...
+
+    def cancelar(self, reserva: str, em: str) -> dict: ...
+
+    def reservas_do_espaco(self, espaco: str) -> list[dict]: ...
+
+
+# Porta de saída: o que o sistema precisa para guardar as agendas
+class RepositorioDeAgendas(Protocol):
+    def todas(self) -> list[Agenda]: ...
+
+    def do_espaco(self, espaco: str) -> Agenda: ...
+
+    def da_reserva(self, reserva: str) -> Agenda: ...
+
+    def salvar(self, agenda: Agenda) -> None: ...

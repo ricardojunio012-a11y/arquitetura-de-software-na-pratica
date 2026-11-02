@@ -1,0 +1,21 @@
+{
+  "espacos": [
+    { "id": "salao", "taxaCentavos": 15000, "antecedenciaMinimaDias": 2, "limitePorMes": 1 },
+    { "id": "churrasqueira", "taxaCentavos": 5000, "antecedenciaMinimaDias": 1, "limitePorMes": 2 }
+  ],
+  "comandos": [
+    { "tipo": "reservar", "reserva": "R-01", "em": "2026-03-02", "unidade": "A-101", "espaco": "salao", "data": "2026-03-14", "inicio": 14, "fim": 22 },
+    { "tipo": "reservar", "reserva": "R-02", "em": "2026-03-02", "unidade": "A-202", "espaco": "salao", "data": "2026-03-14", "inicio": 20, "fim": 23 },
+    { "tipo": "reservar", "reserva": "R-03", "em": "2026-03-03", "unidade": "A-202", "espaco": "salao", "data": "2026-03-14", "inicio": 8, "fim": 12 },
+    { "tipo": "reservar", "reserva": "R-04", "em": "2026-03-03", "unidade": "B-101", "espaco": "churrasqueira", "data": "2026-03-03", "inicio": 12, "fim": 16 },
+    { "tipo": "reservar", "reserva": "R-05", "em": "2026-03-04", "unidade": "A-101", "espaco": "salao", "data": "2026-03-28", "inicio": 14, "fim": 22 },
+    { "tipo": "reservar", "reserva": "R-06", "em": "2026-03-04", "unidade": "B-202", "espaco": "churrasqueira", "data": "2026-03-15", "inicio": 10, "fim": 14 },
+    { "tipo": "cancelar", "reserva": "R-03", "em": "2026-03-05" },
+    { "tipo": "reservar", "reserva": "R-07", "em": "2026-03-06", "unidade": "B-202", "espaco": "churrasqueira", "data": "2026-03-15", "inicio": 13, "fim": 17 },
+    { "tipo": "cancelar", "reserva": "R-01", "em": "2026-03-13" },
+    { "tipo": "reservar", "reserva": "R-08", "em": "2026-03-13", "unidade": "A-101", "espaco": "salao", "data": "2026-03-28", "inicio": 14, "fim": 22 },
+    { "tipo": "cancelar", "reserva": "R-01", "em": "2026-03-13" },
+    { "tipo": "reservar", "reserva": "R-09", "em": "2026-03-13", "unidade": "B-101", "espaco": "churrasqueira", "data": "2026-03-20", "inicio": 18, "fim": 16 },
+    { "tipo": "cancelar", "reserva": "R-99", "em": "2026-03-13" }
+  ]
+}

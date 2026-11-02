@@ -1,0 +1,12 @@
+{
+  "reservas": [
+    { "reserva": "R-01", "unidade": "A-101", "espaco": "salao", "data": "2026-03-14", "pagamento": "P-01" },
+    { "reserva": "R-02", "unidade": "A-102", "espaco": "churrasqueira", "data": "2026-03-10", "pagamento": "P-02" },
+    { "reserva": "R-03", "unidade": "B-101", "espaco": "salao", "data": "2026-03-21", "pagamento": "P-03" }
+  ],
+  "pagamentos": [
+    { "pagamento": "P-01", "unidade": "A-101", "reserva": "R-01", "valorCentavos": 18000 },
+    { "pagamento": "P-02", "unidade": "A-102", "reserva": "R-02", "valorCentavos": 5000, "falha": "depois-de-gravar" },
+    { "pagamento": "P-03", "unidade": "B-101", "reserva": "R-03", "valorCentavos": 18000, "falha": "relay-antes-de-marcar" }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "espacos": ["salao", "churrasqueira"],
+  "comandos": [
+    { "modulo": "financeiro", "tipo": "emitir", "cobranca": "C-01", "unidade": "A-101", "valorCentavos": 66688, "vencimento": "2026-02-10" },
+    { "modulo": "financeiro", "tipo": "emitir", "cobranca": "C-02", "unidade": "A-102", "valorCentavos": 66688, "vencimento": "2026-02-10" },
+    { "modulo": "financeiro", "tipo": "emitir", "cobranca": "C-03", "unidade": "B-101", "valorCentavos": 58685, "vencimento": "2026-02-10" },
+    { "modulo": "financeiro", "tipo": "pagar", "cobranca": "C-01", "em": "2026-02-08" },
+    { "modulo": "financeiro", "tipo": "parcelar", "cobranca": "C-03", "parcelas": 3, "em": "2026-02-20" },
+    { "modulo": "reservas", "tipo": "reservar", "reserva": "R-01", "unidade": "A-101", "espaco": "salao", "data": "2026-03-14", "em": "2026-03-02" },
+    { "modulo": "reservas", "tipo": "reservar", "reserva": "R-02", "unidade": "A-102", "espaco": "churrasqueira", "data": "2026-03-10", "em": "2026-03-02" },
+    { "modulo": "reservas", "tipo": "reservar", "reserva": "R-03", "unidade": "B-101", "espaco": "churrasqueira", "data": "2026-03-12", "em": "2026-03-02" },
+    { "modulo": "financeiro", "tipo": "pagar", "cobranca": "C-02", "em": "2026-03-03" },
+    { "modulo": "reservas", "tipo": "reservar", "reserva": "R-04", "unidade": "A-102", "espaco": "churrasqueira", "data": "2026-03-10", "em": "2026-03-03" },
+    { "modulo": "reservas", "tipo": "reservar", "reserva": "R-05", "unidade": "B-102", "espaco": "salao", "data": "2026-03-14", "em": "2026-03-03" }
+  ]
+}

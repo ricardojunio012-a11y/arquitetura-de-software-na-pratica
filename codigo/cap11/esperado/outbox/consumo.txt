@@ -1,0 +1,8 @@
+reservas recebeu E-P-01: R-01 confirmada
+reservas recebeu E-P-02: R-02 confirmada
+reservas recebeu E-P-03: R-03 confirmada
+reservas ignorou E-P-03 (repetido)
+comunicacao recebeu E-P-01: avisou A-101
+comunicacao recebeu E-P-02: avisou A-102
+comunicacao recebeu E-P-03: avisou B-101
+comunicacao ignorou E-P-03 (repetido)

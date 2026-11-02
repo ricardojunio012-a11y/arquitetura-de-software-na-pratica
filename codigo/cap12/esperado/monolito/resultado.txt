@@ -1,0 +1,6 @@
+avisos enviados: 200
+chamadas pela rede: 0
+respostas com erro: 0
+novas tentativas: 0
+avisos repetidos ignorados: 0
+avisos perdidos: 0

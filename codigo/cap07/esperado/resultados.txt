@@ -1,0 +1,13 @@
+R-01;reservar;confirmada;R$ 180,00
+R-02;reservar;recusada;horário sobreposto a R-01
+R-03;reservar;confirmada;R$ 180,00
+R-04;reservar;recusada;antecedência mínima não respeitada
+R-05;reservar;recusada;limite mensal da unidade atingido
+R-06;reservar;confirmada;R$ 60,00
+R-03;cancelar;cancelada;sem multa
+R-07;reservar;recusada;horário sobreposto a R-06
+R-01;cancelar;cancelada;multa R$ 90,00
+R-08;reservar;confirmada;R$ 180,00
+R-01;cancelar;não cancelada;reserva não está confirmada
+R-09;reservar;recusada;período inválido: o fim deve ser depois do início
+R-99;cancelar;não cancelada;reserva não encontrada

@@ -1,0 +1,11 @@
+{
+    "name": "morada/cap12",
+    "description": "Capítulo 12: microsserviços",
+    "type": "project",
+    "require": {
+        "php": ">=8.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    }
+}

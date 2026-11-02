@@ -1,0 +1,3 @@
+P-01 gravado; E-P-01 publicado
+P-02 gravado; o processo caiu antes de publicar
+P-03 gravado; E-P-03 publicado

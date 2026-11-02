@@ -1,0 +1,6 @@
+Para: +5511987650001
+Residencial Jardins: taxa 03/2026 da unidade A-202: R$ 666,88, vence 10/03/2026. Até 05/03/2026: R$ 636,57. Pix copia e cola: PIX-res-jardins-202603-A-202-66688
+----
+Para: +5511987650002
+Residencial Jardins: taxa 03/2026 da unidade B-102: R$ 1.202,83, vence 10/03/2026. Boleto: BOL-res-jardins-202603-B-102-120283
+----

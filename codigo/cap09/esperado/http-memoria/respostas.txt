@@ -1,0 +1,11 @@
+GET /espacos -> 200 [{"id":"salao","taxa":"R$ 150,00","antecedenciaMinimaDias":2},{"id":"churrasqueira","taxa":"R$ 50,00","antecedenciaMinimaDias":1}]
+POST /reservas -> 201 {"reserva":"R-01","situacao":"confirmada","taxa":"R$ 180,00"}
+POST /reservas -> 409 {"erro":"horário sobreposto a R-01"}
+POST /reservas -> 400 {"erro":"campo obrigatório: unidade"}
+POST /reservas -> 409 {"erro":"antecedência mínima não respeitada"}
+POST /reservas -> 201 {"reserva":"R-05","situacao":"confirmada","taxa":"R$ 50,00"}
+GET /espacos/salao/reservas -> 200 [{"reserva":"R-01","unidade":"A-101","periodo":"2026-03-14 14h-22h"}]
+DELETE /reservas/R-01?em=2026-03-13 -> 200 {"reserva":"R-01","situacao":"cancelada","multa":"R$ 90,00"}
+DELETE /reservas/R-99?em=2026-03-13 -> 404 {"erro":"reserva não encontrada"}
+GET /espacos/piscina/reservas -> 404 {"erro":"espaço não encontrado"}
+GET /espacos/churrasqueira/reservas -> 200 [{"reserva":"R-05","unidade":"B-202","periodo":"2026-03-10 10h-14h"}]

@@ -1,0 +1,14 @@
+{
+  "unidades": 50,
+  "avisos": 200,
+  "cadastroFora": { "de": 100, "ate": 109 },
+  "atrasoDaReplica": 2,
+  "mudancas": [
+    { "minuto": 10, "unidade": "U-30", "email": "novo.u30@exemplo.com" },
+    { "minuto": 37, "unidade": "U-40", "email": "novo.u40@exemplo.com" },
+    { "minuto": 61, "unidade": "U-12", "email": "novo.u12@exemplo.com" },
+    { "minuto": 140, "unidade": "U-41", "email": "novo.u41@exemplo.com" },
+    { "minuto": 170, "unidade": "U-05", "email": "novo.u05@exemplo.com" },
+    { "minuto": 180, "unidade": "U-33", "email": "novo.u33@exemplo.com" }
+  ]
+}

@@ -1,0 +1,20 @@
+# Capítulo 8: estilos arquiteturais.
+# A linguagem vem do arquivo .env (LINGUAGEM=node|php|python|java).
+services:
+  # Roda a API em camadas, o núcleo com plugins ou os testes da linguagem escolhida
+  app:
+    build: ./${LINGUAGEM:-node}
+    # Uma imagem por linguagem: trocar o .env não reaproveita a imagem de outra
+    image: morada-cap08-${LINGUAGEM:-node}
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./saida:/dados/saida
+      # Os plugins ficam fora da imagem: um plugin novo entra sem reconstruir o núcleo
+      - ./${LINGUAGEM:-node}/plugins:/app/plugins:ro
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap08
+    working_dir: /cap08

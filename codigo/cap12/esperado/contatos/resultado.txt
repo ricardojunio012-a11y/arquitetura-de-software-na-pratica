@@ -1,0 +1,15 @@
+Consulta ao Cadastro por API, a cada aviso
+  chamadas ao Cadastro: 210 (10 com erro)
+  avisos enviados na hora: 190
+  avisos adiados até o Cadastro voltar: 10 (o maior atraso: 10 min)
+  avisos para e-mail desatualizado: 0
+
+Réplica dos contatos, alimentada por eventos (atraso de 2 min)
+  carga inicial: 50 contatos
+  eventos ContatoAlterado aplicados: 6
+  chamadas ao Cadastro: 0
+  avisos enviados na hora: 200
+  avisos adiados até o Cadastro voltar: 0
+  avisos para e-mail desatualizado: 2
+    E-P-062 para U-12: e-mail antigo (mudou no minuto 61; a réplica, no 63)
+    E-P-141 para U-41: e-mail antigo (mudou no minuto 140; a réplica, no 142)

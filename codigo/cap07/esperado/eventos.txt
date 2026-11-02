@@ -1,0 +1,6 @@
+ReservaConfirmada;R-01;salao;2026-03-14 14h-22h;A-101;R$ 180,00
+ReservaConfirmada;R-03;salao;2026-03-14 8h-12h;A-202;R$ 180,00
+ReservaConfirmada;R-06;churrasqueira;2026-03-15 10h-14h;B-202;R$ 60,00
+ReservaCancelada;R-03;sem multa
+ReservaCancelada;R-01;multa R$ 90,00
+ReservaConfirmada;R-08;salao;2026-03-28 14h-22h;A-101;R$ 180,00

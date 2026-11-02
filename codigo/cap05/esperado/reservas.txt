@@ -1,0 +1,8 @@
+R-01;A-101;salao;2026-03-14;aprovada
+R-02;A-201;salao;2026-03-21;recusada;unidade com débito em aberto
+R-03;A-202;salao;2026-03-14;recusada;espaço já reservado nesta data
+R-04;A-202;churrasqueira;2026-03-03;aprovada
+R-05;B-101;salao;2026-03-03;recusada;antecedência mínima de 2 dias
+R-06;A-101;salao;2026-03-28;recusada;limite de reservas do mês atingido
+R-07;B-101;churrasqueira;2026-03-07;aprovada
+R-08;B-202;salao;2026-03-21;aprovada

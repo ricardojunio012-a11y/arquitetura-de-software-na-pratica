@@ -1,0 +1,15 @@
+tablet A abriu: encomendas [E-01, E-02, E-03], visitantes esperados [Ana, Bruno]
+tablet B abriu: encomendas [E-01, E-02, E-03], visitantes esperados [Ana, Bruno]
+tablet A perdeu a internet
+tablet A guardou op-A1 (entregar E-01) na fila local
+tablet A guardou op-A2 (registrarVisitante Ana) na fila local
+tablet A guardou op-A3 (entregar E-02) na fila local
+tablet B enviou op-B1 (devolver E-02): aplicada
+tablet B enviou op-B2 (entregar E-03): aplicada
+tablet A voltou e enviou 3 operações; a resposta se perdeu
+o BFF reiniciou: o que estava só na memória dele se perdeu
+tablet A reenviou 3 operações:
+  op-A1 (entregar E-01): aplicada
+  op-A2 (registrarVisitante Ana): aplicada
+  op-A3 (entregar E-02): conflito: E-02 já devolvida pelo tablet B às 09:20
+tablet A abriu: encomendas [], visitantes esperados [Bruno]

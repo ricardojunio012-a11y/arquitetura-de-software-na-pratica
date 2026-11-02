@@ -1,0 +1,107 @@
+{
+  "encomendas": [
+    {
+      "encomenda": "E-01",
+      "unidade": "A-101"
+    },
+    {
+      "encomenda": "E-02",
+      "unidade": "B-202"
+    },
+    {
+      "encomenda": "E-03",
+      "unidade": "A-102"
+    }
+  ],
+  "convidados": [
+    {
+      "reserva": "R-01",
+      "unidade": "A-101",
+      "espaco": "salao",
+      "nomes": [
+        "Ana",
+        "Bruno"
+      ]
+    }
+  ],
+  "passos": [
+    {
+      "tablet": "A",
+      "acao": "abrir"
+    },
+    {
+      "tablet": "B",
+      "acao": "abrir"
+    },
+    {
+      "tablet": "A",
+      "acao": "desconectar",
+      "so": [
+        "offline",
+        "reinicio",
+        "persistida"
+      ]
+    },
+    {
+      "tablet": "A",
+      "acao": "entregar",
+      "encomenda": "E-01",
+      "hora": "09:10"
+    },
+    {
+      "tablet": "A",
+      "acao": "registrarVisitante",
+      "nome": "Ana",
+      "reserva": "R-01",
+      "hora": "09:12"
+    },
+    {
+      "tablet": "A",
+      "acao": "entregar",
+      "encomenda": "E-02",
+      "hora": "09:15"
+    },
+    {
+      "tablet": "B",
+      "acao": "devolver",
+      "encomenda": "E-02",
+      "hora": "09:20"
+    },
+    {
+      "tablet": "B",
+      "acao": "entregar",
+      "encomenda": "E-03",
+      "hora": "09:25"
+    },
+    {
+      "tablet": "A",
+      "acao": "reconectar",
+      "perderResposta": true,
+      "so": [
+        "offline",
+        "reinicio",
+        "persistida"
+      ]
+    },
+    {
+      "acao": "reiniciarBff",
+      "so": [
+        "reinicio",
+        "persistida"
+      ]
+    },
+    {
+      "tablet": "A",
+      "acao": "reenviar",
+      "so": [
+        "offline",
+        "reinicio",
+        "persistida"
+      ]
+    },
+    {
+      "tablet": "A",
+      "acao": "abrir"
+    }
+  ]
+}

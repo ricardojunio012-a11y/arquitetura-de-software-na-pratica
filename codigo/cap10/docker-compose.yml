@@ -1,0 +1,46 @@
+# Capítulo 10: DDD estratégico e monólito modular.
+# A linguagem vem do arquivo .env (LINGUAGEM=node|php|python|java).
+services:
+  # Roda a versão antes (Reservas lê a tabela do Financeiro) ou depois (Reservas usa
+  # a API pública do Financeiro), o teste de arquitetura ou os testes de unidade
+  app:
+    build: ./${LINGUAGEM:-node}
+    # Uma imagem por linguagem: trocar o .env não reaproveita a imagem de outra
+    image: morada-cap10-${LINGUAGEM:-node}
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./saida:/dados/saida
+
+  # A parte difícil (só em TypeScript): cada módulo com esquema e papel próprios no
+  # PostgreSQL. Usa sempre a imagem Node, qualquer que seja a linguagem do .env.
+  esquemas:
+    build: ./node
+    image: morada-cap10-node
+    command: esquemas
+    environment:
+      BANCO_URL: postgresql://morada:morada@banco:5432/morada
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./saida:/dados/saida
+    depends_on:
+      banco:
+        condition: service_healthy
+
+  # Sem porta publicada no host: só o serviço "esquemas" o acessa, pela rede interna
+  banco:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap10
+    working_dir: /cap10

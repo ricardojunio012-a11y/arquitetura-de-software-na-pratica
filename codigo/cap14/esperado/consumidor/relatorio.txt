@@ -1,0 +1,3 @@
+envio de um aviso novo: o cliente entendeu
+reenvio de um aviso já enviado: o cliente entendeu
+aviso sem texto: o cliente entendeu

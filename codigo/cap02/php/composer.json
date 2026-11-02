@@ -1,0 +1,11 @@
+{
+    "name": "morada/cap02",
+    "description": "Capítulo 2: requisitos de qualidade",
+    "type": "project",
+    "require": {
+        "php": ">=8.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    }
+}

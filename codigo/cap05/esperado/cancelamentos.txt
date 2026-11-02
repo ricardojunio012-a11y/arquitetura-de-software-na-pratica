@@ -1,0 +1,4 @@
+R-04;aprovada -> cancelada
+R-04;erro;não é possível cancelar uma reserva cancelada
+R-02;erro;não é possível cancelar uma reserva recusada
+R-99;erro;reserva R-99 não encontrada

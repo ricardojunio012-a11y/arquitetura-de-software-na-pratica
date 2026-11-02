@@ -1,0 +1,80 @@
+{
+  "espacos": [
+    {
+      "id": "salao",
+      "nome": "Salão de festas",
+      "taxaCentavos": 15000,
+      "antecedenciaMinimaDias": 2,
+      "limitePorMes": 1
+    },
+    {
+      "id": "churrasqueira",
+      "nome": "Churrasqueira",
+      "taxaCentavos": 5000,
+      "antecedenciaMinimaDias": 1,
+      "limitePorMes": 2
+    }
+  ],
+  "unidades": [
+    {
+      "id": "A-101",
+      "emDebito": false,
+      "morador": { "nome": "Ana Souza", "email": "ana.souza@example.com", "canal": "email" }
+    },
+    {
+      "id": "A-201",
+      "emDebito": true,
+      "morador": { "nome": "Carla Mendes", "email": "carla.mendes@example.com", "canal": "email" }
+    },
+    {
+      "id": "A-202",
+      "emDebito": false,
+      "morador": {
+        "nome": "Diego Rocha",
+        "email": "diego.rocha@example.com",
+        "telefone": "+5511987650001",
+        "canal": "whatsapp"
+      }
+    },
+    {
+      "id": "B-101",
+      "emDebito": false,
+      "morador": {
+        "nome": "Elisa Prado",
+        "email": "elisa.prado@example.com",
+        "telefone": "+5511987650002",
+        "canal": "sms"
+      }
+    },
+    {
+      "id": "B-202",
+      "emDebito": false,
+      "morador": {
+        "nome": "Henrique Alves",
+        "email": "henrique.alves@example.com",
+        "telefone": "+5511987650003",
+        "canal": "whatsapp"
+      }
+    }
+  ],
+  "pedidos": [
+    { "id": "R-01", "unidade": "A-101", "espaco": "salao", "data": "2026-03-14" },
+    { "id": "R-02", "unidade": "A-201", "espaco": "salao", "data": "2026-03-21" },
+    { "id": "R-03", "unidade": "A-202", "espaco": "salao", "data": "2026-03-14" },
+    { "id": "R-04", "unidade": "A-202", "espaco": "churrasqueira", "data": "2026-03-03" },
+    { "id": "R-05", "unidade": "B-101", "espaco": "salao", "data": "2026-03-03" },
+    { "id": "R-06", "unidade": "A-101", "espaco": "salao", "data": "2026-03-28" },
+    { "id": "R-07", "unidade": "B-101", "espaco": "churrasqueira", "data": "2026-03-07" },
+    { "id": "R-08", "unidade": "B-202", "espaco": "salao", "data": "2026-03-21" }
+  ],
+  "falhasSimuladas": {
+    "+5511987650001": 1,
+    "+5511987650002": 5
+  },
+  "destinosInvalidos": ["carla.mendes@example.com"],
+  "cancelamentos": ["R-04", "R-04", "R-02", "R-99"],
+  "pedidosSimultaneos": [
+    { "id": "R-09", "unidade": "A-202", "espaco": "salao", "data": "2026-03-28" },
+    { "id": "R-10", "unidade": "B-101", "espaco": "salao", "data": "2026-03-28" }
+  ]
+}

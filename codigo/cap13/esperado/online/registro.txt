@@ -1,0 +1,8 @@
+tablet A abriu: encomendas [E-01, E-02, E-03], visitantes esperados [Ana, Bruno]
+tablet B abriu: encomendas [E-01, E-02, E-03], visitantes esperados [Ana, Bruno]
+tablet A enviou op-A1 (entregar E-01): aplicada
+tablet A enviou op-A2 (registrarVisitante Ana): aplicada
+tablet A enviou op-A3 (entregar E-02): aplicada
+tablet B enviou op-B1 (devolver E-02): conflito: E-02 já entregue pelo tablet A às 09:15
+tablet B enviou op-B2 (entregar E-03): aplicada
+tablet A abriu: encomendas [], visitantes esperados [Bruno]

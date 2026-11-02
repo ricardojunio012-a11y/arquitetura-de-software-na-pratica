@@ -1,0 +1,10 @@
+# Prestação de contas 03/2026 - Residencial Jardins
+receitas;taxas condominiais;4.850,00
+receitas;fundo de reserva;485,02
+despesas;Limpeza;1.200,00
+despesas;Portaria;2.100,00
+despesas;Energia e água;950,00
+despesas;Manutenção;600,00
+despesas;total;4.850,00
+fundo;saldo anterior;12.000,00
+fundo;saldo previsto;12.485,02

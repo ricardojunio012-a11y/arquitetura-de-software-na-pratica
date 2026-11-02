@@ -1,0 +1,98 @@
+Para: ana.souza@example.com
+Assunto: Taxa condominial 03/2026 - Residencial Jardins - Unidade A-101
+
+Olá, Ana Souza.
+
+A taxa condominial de 03/2026 da unidade A-101 está disponível.
+Valor: R$ 666,88
+Vencimento: 10/03/2026
+Boleto: BOL-res-jardins-202603-A-101-66688
+
+Administração do Residencial Jardins
+----
+Para: bruno.lima@example.com
+Assunto: Taxa condominial 03/2026 - Residencial Jardins - Unidade A-102
+
+Olá, Bruno Lima.
+
+A taxa condominial de 03/2026 da unidade A-102 está disponível.
+Valor: R$ 666,88
+Vencimento: 10/03/2026
+Boleto: BOL-res-jardins-202603-A-102-66688
+
+Administração do Residencial Jardins
+----
+Para: carla.mendes@example.com
+Assunto: Taxa condominial 03/2026 - Residencial Jardins - Unidade A-201
+
+Olá, Carla Mendes.
+
+A taxa condominial de 03/2026 da unidade A-201 está disponível.
+Valor: R$ 1.352,18
+Vencimento: 10/03/2026
+Inclui débito anterior de R$ 667,50, com multa de R$ 13,35 e juros de R$ 4,45.
+Boleto: BOL-res-jardins-202603-A-201-135218
+
+Administração do Residencial Jardins
+----
+Para: diego.rocha@example.com
+Assunto: Taxa condominial 03/2026 - Residencial Jardins - Unidade A-202
+
+Olá, Diego Rocha.
+
+A taxa condominial de 03/2026 da unidade A-202 está disponível.
+Valor: R$ 666,88
+Vencimento: 10/03/2026
+Boleto: BOL-res-jardins-202603-A-202-66688
+
+Administração do Residencial Jardins
+----
+Para: elisa.prado@example.com
+Assunto: Taxa condominial 03/2026 - Residencial Jardins - Unidade B-101
+
+Olá, Elisa Prado.
+
+A taxa condominial de 03/2026 da unidade B-101 está disponível.
+Valor: R$ 586,85
+Vencimento: 10/03/2026
+Boleto: BOL-res-jardins-202603-B-101-58685
+
+Administração do Residencial Jardins
+----
+Para: fabio.nunes@example.com
+Assunto: Taxa condominial 03/2026 - Residencial Jardins - Unidade B-102
+
+Olá, Fábio Nunes.
+
+A taxa condominial de 03/2026 da unidade B-102 está disponível.
+Valor: R$ 1.202,83
+Vencimento: 10/03/2026
+Inclui débito anterior de R$ 594,00, com multa de R$ 11,88 e juros de R$ 10,10.
+Boleto: BOL-res-jardins-202603-B-102-120283
+
+Administração do Residencial Jardins
+----
+Para: gabriela.torres@example.com
+Assunto: Taxa condominial 03/2026 - Residencial Jardins - Unidade B-201
+
+Olá, Gabriela Torres.
+
+A taxa condominial de 03/2026 da unidade B-201 está disponível.
+Valor: R$ 746,90
+Vencimento: 10/03/2026
+Boleto: BOL-res-jardins-202603-B-201-74690
+
+Administração do Residencial Jardins
+----
+Para: henrique.alves@example.com
+Assunto: Taxa condominial 03/2026 - Residencial Jardins - Unidade B-202
+
+Olá, Henrique Alves.
+
+A taxa condominial de 03/2026 da unidade B-202 está disponível.
+Valor: R$ 746,90
+Vencimento: 10/03/2026
+Boleto: BOL-res-jardins-202603-B-202-74690
+
+Administração do Residencial Jardins
+----

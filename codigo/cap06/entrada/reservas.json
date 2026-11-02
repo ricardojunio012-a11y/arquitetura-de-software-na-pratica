@@ -1,0 +1,23 @@
+{
+  "espacos": [
+    { "id": "salao", "nome": "Salão de festas", "taxa": 15000 },
+    { "id": "churrasqueira", "nome": "Churrasqueira", "taxa": 5000 }
+  ],
+  "unidades": [
+    { "id": "A-101", "email": "ana.souza@example.com", "emDebito": false },
+    { "id": "A-201", "email": "carla.mendes@example.com", "emDebito": true },
+    { "id": "A-202", "email": "diego.rocha@example.com", "emDebito": false },
+    { "id": "B-101", "email": "elisa.prado@example.com", "emDebito": false },
+    { "id": "B-202", "email": "henrique.alves@example.com", "emDebito": false }
+  ],
+  "pedidos": [
+    { "id": "R-01", "unidade": "A-101", "espaco": "salao", "data": "2026-03-14", "convidados": 30 },
+    { "id": "R-02", "unidade": "A-201", "espaco": "salao", "data": "2026-03-21", "convidados": 20 },
+    { "id": "R-03", "unidade": "A-202", "espaco": "salao", "data": "2026-03-14", "convidados": 40 },
+    { "id": "R-04", "unidade": "A-202", "espaco": "churrasqueira", "data": "2026-03-03", "convidados": 10 },
+    { "id": "R-05", "unidade": "B-101", "espaco": "churrasqueira", "data": "2026-03-15", "convidados": 60 },
+    { "id": "R-06", "unidade": "B-202", "espaco": "salao", "data": "2026-03-10", "convidados": 80 },
+    { "id": "R-07", "unidade": "A-101", "espaco": "churrasqueira", "data": "2026-03-21", "convidados": 12 },
+    { "id": "R-08", "unidade": "B-101", "espaco": "salao", "data": "2026-03-10", "convidados": 10 }
+  ]
+}

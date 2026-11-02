@@ -1,0 +1,7 @@
+plugins carregados: alfa, beta, pagafacil
+A-101;R$ 666,88;alfa;ALFA-00001
+A-102;R$ 666,88;pagafacil;PIX-A102
+A-201;R$ 1.352,18;beta;BETA/0001
+A-202;R$ 666,88;alfa;ALFA-00002
+B-101;R$ 586,85;caixa;sem plugin para o banco caixa
+B-102;R$ 1.202,83;beta;BETA/0002

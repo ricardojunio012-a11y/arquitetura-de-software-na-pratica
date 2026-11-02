@@ -1,0 +1,23 @@
+# Capítulo 4: SOLID e GRASP.
+# A linguagem e o gateway vêm do arquivo .env (LINGUAGEM=node|php|python|java, GATEWAY=alfa|pagafacil).
+services:
+  # Roda a versão antes ou depois da emissão de cobranças, ou os testes da linguagem escolhida
+  app:
+    build: ./${LINGUAGEM:-node}
+    # Uma imagem por linguagem: trocar o .env não reaproveita a imagem de outra
+    image: morada-cap04-${LINGUAGEM:-node}
+    environment:
+      HOJE: ${HOJE:-2026-03-02}
+      GATEWAY: ${GATEWAY:-alfa}
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./saida:/dados/saida
+
+  # Compara a saída com o resultado aprovado para o gateway escolhido
+  ferramentas:
+    build: ./ferramentas
+    environment:
+      GATEWAY: ${GATEWAY:-alfa}
+    volumes:
+      - ./:/cap04
+    working_dir: /cap04
