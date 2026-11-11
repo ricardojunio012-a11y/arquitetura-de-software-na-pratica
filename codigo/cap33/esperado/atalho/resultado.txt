@@ -1,0 +1,11 @@
+o atalho: copiar os dados logo depois de criar a coluna, com a v1 no ar
+  migração: ALTER TABLE moradores ADD COLUMN telefone text
+  cópia em lotes de 250: 1000 linhas em 4 lotes
+  v1 e v2 juntas                      200 operações: 0 erros, 0 leituras erradas
+  só a v2                             200 operações: 0 erros, 0 leituras erradas
+  v2 e v3 juntas                      200 operações: 0 erros, 2 leituras erradas
+  só a v3                             200 operações: 0 erros, 4 leituras erradas
+
+total: 0 erros e 6 leituras erradas
+conferência: 1074 moradores, 7 sem telefone
+moradores com telefone diferente do celular: 34

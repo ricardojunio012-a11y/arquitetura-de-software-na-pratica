@@ -1,0 +1,29 @@
+1. cópia ingênua (parseFloat, new Date, vaga como unidade)
+  item                                      legado   Morada  quarent.
+  unidades (aptos do tipo A)                     24       34        0  DIFERENTE
+  vagas (aptos do tipo G)                        10        0        0  DIFERENTE
+  cobranças                                     102      102        0  ok
+  soma das cobranças (centavos)             8305980   322641        0  DIFERENTE
+  soma das pagas (centavos)                 7299191   258768        0  DIFERENTE
+  vencimentos fora do mês da competência          0       68        0  DIFERENTE
+  conferência: 5 itens com diferença
+
+2. pela camada anticorrupção
+  item                                      legado   Morada  quarent.
+  unidades (aptos do tipo A)                     24       24        0  ok
+  vagas (aptos do tipo G)                        10        8        2  ok
+  cobranças                                     102       96        6  ok
+  soma das cobranças (centavos)             8305980  8243052    62928  ok
+  soma das pagas (centavos)                 7299191  7246751    52440  ok
+  vencimentos fora do mês da competência          0        0        0  ok
+  conferência: aprovada
+
+3. a mesma migração de novo (idempotente)
+  item                                      legado   Morada  quarent.
+  unidades (aptos do tipo A)                     24       24        0  ok
+  vagas (aptos do tipo G)                        10        8        2  ok
+  cobranças                                     102       96        6  ok
+  soma das cobranças (centavos)             8305980  8243052    62928  ok
+  soma das pagas (centavos)                 7299191  7246751    52440  ok
+  vencimentos fora do mês da competência          0        0        0  ok
+  conferência: aprovada

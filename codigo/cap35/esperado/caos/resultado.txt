@@ -1,0 +1,16 @@
+Morada: experimento de caos na API de avisos (1000 pedidos cada)
+Hipótese de estado estável: pelo menos 99,9% dos pedidos respondidos
+A falha é injetada depois do pedido 500.
+
+experimento                                    respondidos   disp.  hipótese
+linha de base: api-1 (a) e api-3 (b)          1000 de 1000  100,0%  mantida
+api-1 cai; o balanceador não tenta outra       750 de 1000   75,0%  refutada
+api-1 cai; o balanceador tenta a outra        1000 de 1000  100,0%  mantida
+zona a cai: api-1 (a) e api-2 (a)              500 de 1000   50,0%  refutada
+zona a cai: api-1 (a) e api-3 (b)             1000 de 1000  100,0%  mantida
+
+A conta da seção 35.1, com réplicas de 99,5% e zonas de 99,9% (premissas):
+  uma réplica                                   99,5000%    43,8 h/ano
+  duas réplicas independentes                   99,9975%     0,2 h/ano
+  duas réplicas na mesma zona                   99,8975%     9,0 h/ano
+  duas réplicas, cada uma na sua zona           99,9964%     0,3 h/ano

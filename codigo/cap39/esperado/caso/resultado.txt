@@ -1,0 +1,18 @@
+Ponto quente: src/financeiro/cobranca.ts
+Período: 129 commits de 1º jan. a 30 jun. 2026 (dois trimestres)
+
+Juros
+  mudanças que tocaram o arquivo                            29
+  horas por mudança no arquivo                          12,3 h
+    um ano antes (jan. a jun. 2025)                      7,0 h
+  horas por mudança no resto do código                   5,3 h
+  correções entre as mudanças do arquivo                   41%
+  correções entre as mudanças do resto                     27%
+  horas a mais por trimestre                             101 h
+  juros por trimestre (R$ 150 por hora)              R$ 15.200
+
+Opções (novidade: cobrança recorrente por Pix)
+               semanas  pagamento  juros/ano     atraso   12 meses   24 meses
+  não pagar        6,0       R$ 0  R$ 60.600   R$ 1.400  R$ 62.000 R$ 122.700
+  pagar antes      7,0  R$ 36.000  R$ 30.300   R$ 4.200  R$ 70.500 R$ 100.800
+  pagar junto      5,5  R$ 18.000  R$ 39.400       R$ 0  R$ 57.400  R$ 96.800

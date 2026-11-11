@@ -1,0 +1,5 @@
+o worker recebe a tarefa e cai antes de confirmar; 3 s depois, outro tenta
+                                em memória  na AWS (LocalStack)
+tarefas na primeira entrega     1           1
+tarefas depois do prazo         0           1
+a tarefa se perdeu              sim         não

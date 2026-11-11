@@ -1,0 +1,6 @@
+função morada-prestacao publicada (nodejs22.x, 1024 MB)
+
+fria     200 prestacoes/cond-0001/2026-10.pdf 995 bytes confere
+quente   200 prestacoes/cond-0002/2026-10.pdf 995 bytes confere
+quente   200 prestacoes/cond-0003/2026-10.pdf 995 bytes confere
+fria     200 prestacoes/cond-0004/2026-10.pdf 995 bytes confere

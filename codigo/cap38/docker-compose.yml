@@ -1,0 +1,17 @@
+# Capítulo 38: governança arquitetural.
+services:
+  # O registro de decisões do Morada é validado, e duas decisões viram funções de
+  # aptidão que barram commits. O banco é um PostgreSQL embutido (PGlite), em memória,
+  # e a carga roda num relógio simulado: nada é publicado em portas
+  app:
+    build: ./node
+    image: morada-cap38-node
+    volumes:
+      - ./saida:/dados/saida
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap38
+    working_dir: /cap38

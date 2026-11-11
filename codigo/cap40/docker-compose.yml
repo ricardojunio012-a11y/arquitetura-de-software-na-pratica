@@ -1,0 +1,17 @@
+# Capítulo 40: custo de infraestrutura e FinOps.
+services:
+  # A calculadora de custo do Morada: custo por condomínio e por boleto,
+  # crescimento de 10 vezes em três arquiteturas, a tabela para o CFO e o
+  # compromisso de uso. Só contas, sem nuvem e sem portas publicadas
+  app:
+    build: ./node
+    image: morada-cap40-node
+    volumes:
+      - ./saida:/dados/saida
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap40
+    working_dir: /cap40

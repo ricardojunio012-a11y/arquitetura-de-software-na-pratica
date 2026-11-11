@@ -1,0 +1,22 @@
+Morada: recuperação a um ponto no tempo (PITR)
+
+1. Antes do backup
+   cobranças: 3000 cobranças, 0 pagas, hash db12280b3f12
+2. Backup base com pg_basebackup; daqui em diante, só o WAL é copiado
+3. O dia continua: 400 pagamentos e 20 avisos depois do backup
+   cobranças: 3000 cobranças, 400 pagas, hash 37b51c6b3687
+4. Por engano, DROP TABLE financeiro.cobrancas na produção
+   o resto do Morada continua no ar: 15 avisos publicados depois
+   a tela de cobranças falha: erro 42P01 (a tabela não existe)
+5. Restauração numa instância à parte, até o instante anterior ao DROP
+   o segmento de WAL aberto é fechado e arquivado
+   cobranças restauradas: 3000 cobranças, 400 pagas, hash 37b51c6b3687
+   iguais às de antes do acidente: sim
+   avisos na instância restaurada: 120; na produção: 135
+   voltar o banco inteiro ao passado perderia 15 avisos
+6. Só a tabela volta para a produção, com pg_dump e psql
+   cobranças na produção: 3000 cobranças, 400 pagas, hash 37b51c6b3687
+   avisos na produção: 135
+   pagamentos perdidos (RPO): 0
+
+O tempo de cada etapa (o RTO medido) fica em saida/tempos/pitr.txt.

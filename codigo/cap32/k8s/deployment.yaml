@@ -1,0 +1,54 @@
+# A API do Morada: o estado desejado, que o Kubernetes mantém
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: morada-api
+  labels:
+    app: morada-api
+spec:
+  replicas: 3 # ponto de partida; depois quem decide é o HPA
+  selector:
+    matchLabels:
+      app: morada-api
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25% # sobe réplicas novas antes de tirar as antigas
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: morada-api
+    spec:
+      terminationGracePeriodSeconds: 30 # prazo do SIGTERM (capítulo 22)
+      containers:
+        - name: api
+          # tag imutável, nunca "latest"; a assinatura é conferida na admissão
+          image: registro.morada.com.br/morada-api:2026.10.3
+          ports:
+            - name: http
+              containerPort: 3000
+          resources:
+            requests: # o que o escalonador reserva no nó, e a base do HPA
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              memory: 512Mi # sem limite de CPU: usa a folga do nó
+          startupProbe: # até 60 s para subir; enquanto isso, as outras esperam
+            httpGet:
+              path: /saude/vida
+              port: http
+            periodSeconds: 2
+            failureThreshold: 30
+          livenessProbe: # travou? reinicia. Só olha o próprio processo
+            httpGet:
+              path: /saude/vida
+              port: http
+            periodSeconds: 10
+            failureThreshold: 3
+          readinessProbe: # pode receber pedidos? Se não, sai do Service
+            httpGet:
+              path: /saude/pronta
+              port: http
+            periodSeconds: 5
+            failureThreshold: 2

@@ -1,0 +1,20 @@
+publicação 1, expandir: a v2 grava nas duas colunas e lê da antiga
+  migração: ALTER TABLE moradores ADD COLUMN telefone text
+  v1 e v2 juntas                      200 operações: 0 erros, 0 leituras erradas
+  só a v2                             200 operações: 0 erros, 0 leituras erradas
+
+migrar os dados antigos, com a v1 já fora do ar
+  cópia em lotes de 250: 925 linhas em 4 lotes
+
+publicação 2: a v3 passa a ler da coluna nova
+  v2 e v3 juntas                      200 operações: 0 erros, 0 leituras erradas
+  só a v3                             200 operações: 0 erros, 0 leituras erradas
+
+publicação 3, contrair: a v4 só conhece a coluna nova
+  v3 e v4 juntas                      200 operações: 0 erros, 0 leituras erradas
+  só a v4                             200 operações: 0 erros, 0 leituras erradas
+  migração: ALTER TABLE moradores DROP COLUMN celular
+  só a v4, sem a coluna antiga        200 operações: 0 erros, 0 leituras erradas
+
+total: 0 erros e 0 leituras erradas
+conferência: 1132 moradores, 0 sem telefone

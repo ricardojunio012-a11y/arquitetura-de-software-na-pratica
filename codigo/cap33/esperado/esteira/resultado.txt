@@ -1,0 +1,36 @@
+em produção: c0
+
+commit c1: desconto de 3% para quem paga 5 dias antes
+  compilar    ok
+  testes      ok      5 de 5
+  arquitetura ok      0 violações
+  empacotar   ok      morada-74396e37bf9f
+  canário     ok      5%: 0 erros em 1017; produção: 0 em 18983
+  => publicado: c1 atende 100% do tráfego
+
+commit c2: desconto truncado em vez de arredondado
+  compilar    ok
+  testes      FALHOU
+      4 de 5; falhou: "o desconto é arredondado para o centavo mais próximo"
+  => barrado no estágio testes; nada foi publicado
+
+commit c3: vencimento em feriado vai para o dia útil (atalho)
+  compilar    ok
+  testes      ok      6 de 6
+  arquitetura FALHOU
+      dominio-sem-infraestrutura: dominio/encargos.ts -> adaptadores/feriados-pg.ts
+  => barrado no estágio arquitetura; nada foi publicado
+
+commit c4: vencimento em feriado vai para o dia útil (porta)
+  compilar    ok
+  testes      ok      6 de 6
+  arquitetura ok      0 violações
+  empacotar   ok      morada-452fe944a35a
+  canário     FALHOU
+      5%: 29 erros em 1017 (feriados de 2027 não cadastrados); produção: 0 em 18983
+  => revertido: o canário foi desligado; a produção continua no c1
+
+resumo: 4 commits, 2 publicações (c1 e c4), 2 barrados
+taxa de falha de mudança: 1 de 2 (50%)
+consultas afetadas pela falha: 29 de 20000
+em produção: c1

@@ -1,0 +1,37 @@
+# Capítulo 37: privacidade e conformidade.
+services:
+  # A eliminação de um ex-morador (banco, eventos e backup) e a trilha de auditoria
+  app:
+    build: ./node
+    image: morada-cap37-node
+    environment:
+      BANCO_URL: postgresql://morada:morada@banco:5432/morada
+      APP_URL: postgresql://app_morada:app@banco:5432/morada
+      RESTAURACAO_URL: postgresql://morada:morada@banco:5432/restauracao
+      # Chave mestra do laboratório. Em produção, ela fica num serviço de chaves
+      # (KMS ou HSM) e nunca sai dele.
+      CHAVE_MESTRA: ${CHAVE_MESTRA}
+    volumes:
+      - ./sql:/dados/sql:ro
+      - ./saida:/dados/saida
+    depends_on:
+      banco:
+        condition: service_healthy
+
+  banco:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap37
+    working_dir: /cap37

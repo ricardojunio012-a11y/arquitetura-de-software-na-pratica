@@ -1,0 +1,25 @@
+== modo: corrigido
+1. login no Keycloak (OIDC) e papéis no token
+   ana    papéis: morador
+   bruno  papéis: morador, sindico
+   carla  papéis: porteiro
+   dora   papéis: administradora
+   edu    papéis: morador
+   token de ana: aud inclui morada-api: true
+   validade: 300 s
+2. autenticação
+   sem token, B-1001: 401 nao-autenticado
+   ana com o papel de síndica forjado no token: 401 token-invalido
+   token com alg "none": 401 token-invalido
+3. autorização por papel (RBAC)
+   ana lê o boleto da própria unidade: 200 (B-1001, unidade C-01/101)
+   carla (porteira) lê o mesmo boleto: 403 papel-sem-acesso
+4. autorização por objeto (o IDOR)
+   ana lê o boleto do vizinho (102): 404 boleto-inexistente
+   ana lê um boleto do condomínio C-02: 404 boleto-inexistente
+   edu (C-02) lista os boletos do C-01: 404 condominio-inexistente
+5. enumeração: cada um tenta os 12 boletos, de B-1001 a B-1012
+   ana    lê  1 de 12 (C-01)
+   bruno  lê  4 de 12 (C-01)
+   dora   lê  8 de 12 (C-01, C-03)
+   edu    lê  1 de 12 (C-02)

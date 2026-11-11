@@ -1,0 +1,17 @@
+389 commits; 2 ignorados por tocarem mais de 10 arquivos
+
+ # arquivo                    revisões linhas complexidade prioridade autor principal
+ 1 financeiro/cobranca.ts           91    519          976         64 Ana 66%
+ 2 financeiro/boleto.ts             57    281          341         14 Ana 53%
+ 3 financeiro/situacao.ts           44    236          286          9 Ana 20%
+ 4 reservas/regras.ts               45    228          275          9 Ana 18%
+ 5 portaria/visitantes.ts           40    200          242          7 Carla 20%
+ 6 reservas/agenda.ts               33    245          297          7 Bruno 21%
+ 7 financeiro/pix.ts                30    236          286          6 Elisa 20%
+ 8 manutencao/chamados.ts           28    218          264          5 Gabriela 29%
+ 9 cadastro/unidades.ts             20    164          198          3 Fábio 30%
+10 comunicacao/avisos.ts            22    173          209          3 Diego 27%
+11 cadastro/moradores.ts            14    146          176          2 Diego 21%
+12 legado/relatorio-anual.ts         2    602        1.520          2 Diego 100%
+13 comunicacao/notificador.ts       14     92          110          1 Carla 29%
+14 portaria/encomendas.ts           12    101          121          1 Fábio 42%

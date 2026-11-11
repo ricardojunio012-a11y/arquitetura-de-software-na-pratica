@@ -1,0 +1,5 @@
+Pares que mudaram juntos em pelo menos 5 commits e em 30% das vezes
+
+arquivo A                  arquivo B                  juntos  grau  módulos   import?
+financeiro/situacao.ts     reservas/regras.ts             34   76%  outro     NÃO
+financeiro/boleto.ts       financeiro/cobranca.ts         33   45%  mesmo     sim

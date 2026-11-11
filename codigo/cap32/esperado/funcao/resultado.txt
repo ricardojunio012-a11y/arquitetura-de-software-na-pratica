@@ -1,0 +1,13 @@
+função: 1024 MB; partida a frio de 500 ms; ambiente parado some em 5 min
+
+PDFs gerados pelo código da função (os 3 primeiros condomínios):
+  cond-0001  77 unidades  995 bytes  sha256 150f2bf4105ed1ae...
+  cond-0002  259 unidades  995 bytes  sha256 81c322ffb2837084...
+  cond-0003  44 unidades  994 bytes  sha256 c97523c750955e49...
+
+                   chamadas  partidas a frio   p50 (ms)   p99 (ms)
+lote do dia 1         3.000        50 (1,7%)      18122      34883
+avulsos no mês        1.500     1060 (70,7%)        878       1820
+
+o lote levou 36 s, com até 50 execuções em paralelo; tempo cobrado: 1.752 s
+cobrado no mês: 4.500 requisições e 3.164 GB-s = US$ 0,05 (R$ 0,29)

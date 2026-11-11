@@ -1,0 +1,23 @@
+rodada 1: 10 dias, Acácias em sombra, regras da camada v1
+  pedidos comparados: 52; iguais: 23
+  arredondamento (aceita) (GET rateios): 18 itens, 109 vezes
+    P0101/0102 11/2026, P0101/0201 11/2026, P0101/0202 11/2026, ...
+  ausente no Morada (GET aptos): 2 itens, 8 vezes
+    P0101/G-09, P0101/G-10
+  ausente no Morada (GET inadimplentes): 1 item, 3 vezes
+    P0101/G-09
+  ausente no Morada (GET rateios): 4 itens, 20 vezes
+    P0101/G-09 10/2026, P0101/G-09 11/2026, P0101/G-10 10/2026, ...
+  diferente (GET rateios): 1 item, 7 vezes
+    P0101/0101 11/2026
+  não explicadas: 7 itens, 38 vezes
+
+correções: isenção do síndico pela observação; vínculo de G-09 e G-10
+
+rodada 2: mais 10 dias, regras da camada v2
+  pedidos comparados: 75; iguais: 39
+  arredondamento (aceita) (GET inadimplentes): 19 itens, 71 vezes
+    P0101/0102, P0101/0201, P0101/0202, ...
+  arredondamento (aceita) (GET rateios): 19 itens, 140 vezes
+    P0101/0102 11/2026, P0101/0201 11/2026, P0101/0202 11/2026, ...
+  não explicadas: 0 itens, 0 vezes

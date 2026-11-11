@@ -1,0 +1,47 @@
+{
+  "titular": 3,
+  "unidade": "302",
+  "cadastro": {
+    "nome": "Carlos Menezes",
+    "cpf": "161.803.398-05",
+    "email": "carlos.menezes@exemplo.com.br"
+  },
+  "cobrancas": [
+    {
+      "unidade": "302",
+      "competencia": "2026-10",
+      "valor_centavos": 89000,
+      "paga": true
+    }
+  ],
+  "eventos": [
+    {
+      "tipo": "MoradorCadastrado",
+      "momento": "2026-09-01T09:03",
+      "dados": {
+        "cpf": "161.803.398-05",
+        "nome": "Carlos Menezes",
+        "email": "carlos.menezes@exemplo.com.br",
+        "unidade": "302"
+      }
+    },
+    {
+      "tipo": "CobrancaPaga",
+      "momento": "2026-10-05T10:03",
+      "dados": {
+        "valor": "890,00",
+        "pagador": "Carlos Menezes",
+        "unidade": "302",
+        "competencia": "2026-10"
+      }
+    },
+    {
+      "tipo": "EncomendaRecebida",
+      "momento": "2026-10-12T15:30",
+      "dados": {
+        "unidade": "302",
+        "destinatario": "Carlos Menezes"
+      }
+    }
+  ]
+}

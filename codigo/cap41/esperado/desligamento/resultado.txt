@@ -1,0 +1,19 @@
+2026-11-01: Acácias no Morada; dimob desligada
+  o aplicativo antigo pede a dimob: 410 ROTA DESLIGADA
+2026-12-01: 30 dias depois, chamadas por destino
+  Acácias -> Morada: 213
+  Acácias -> legado: 0
+  Ipês -> legado:    54
+
+lista de conferência para desligar o Acácias no legado:
+  [x] nenhuma chamada do Acácias ao legado em 30 dias
+  [x] conferência aprovada no dia da virada
+  [x] quarentena vazia
+  [x] arquivo exportado: 170 linhas, sha256 9289cd2bddca717d
+
+desligando o Acácias no legado:
+  rateio: 136 linhas apagadas
+  apto: 34 linhas apagadas
+  comunicado: 0 linhas apagadas
+  regra desfeita por engano, o legado responde: 404
+  o legado continua com o Ipês: 1 prédio, 12 aptos

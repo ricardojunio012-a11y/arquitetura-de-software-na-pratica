@@ -1,0 +1,52 @@
+# Capítulo 32: contêineres, Kubernetes e serverless.
+services:
+  # O Morada no Kubernetes, simulado: lê os manifestos de k8s/ e roda o escalonador,
+  # o HPA e a função da prestação de contas num relógio simulado, com sementes fixas
+  app:
+    build: ./node
+    image: morada-cap32-node
+    volumes:
+      - ./k8s:/dados/k8s:ro
+      - ./saida:/dados/saida
+
+  # A AWS emulada, só para o passo "nuvem": Lambda e S3. As funções rodam em
+  # contêineres que o LocalStack cria, por isso ele recebe o socket do Docker (o
+  # que equivale a dar a ele o controle do Docker da máquina: só em laboratório).
+  # A 4.14.0 é a última versão do LocalStack que roda sem conta e sem token.
+  # Nenhuma porta é publicada no host
+  localstack:
+    image: localstack/localstack:4.14.0
+    profiles: ["nuvem"]
+    environment:
+      SERVICES: lambda,s3,iam,sts,logs
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://localhost:4566/_localstack/health"]
+      interval: 3s
+      retries: 40
+
+  # O mesmo laboratório, apontado para o LocalStack
+  nuvem:
+    build: ./node
+    image: morada-cap32-node
+    profiles: ["nuvem"]
+    command: ["nuvem"]
+    environment:
+      AWS_ENDPOINT_URL: http://localstack:4566
+      AWS_REGION: sa-east-1
+      # Credenciais de teste: o LocalStack aceita qualquer valor
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+    volumes:
+      - ./saida:/dados/saida
+    depends_on:
+      localstack:
+        condition: service_healthy
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap32
+    working_dir: /cap32

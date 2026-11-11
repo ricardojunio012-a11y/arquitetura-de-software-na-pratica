@@ -1,0 +1,14 @@
+{
+  "valorHora": 150,
+  "valorPessoaDia": 1200,
+  "pagamento": { "pessoasDia": 30, "pessoas": 2, "reducaoDosJuros": 0.5 },
+  "pagarJunto": { "pessoasDia": 15, "reducaoDosJuros": 0.35 },
+  "novidade": {
+    "nome": "cobrança recorrente por Pix",
+    "condominios": 3000,
+    "adesao": 0.1,
+    "precoMensal": 40,
+    "semanasHoje": 6,
+    "semanasDepois": 4
+  }
+}

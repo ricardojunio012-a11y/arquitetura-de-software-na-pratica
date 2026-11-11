@@ -1,0 +1,17 @@
+TABELA PARA O CFO: um mês, em reais
+                             pool       pool    celulas    celulas      silos      silos
+condomínios                 3.000     30.000      3.000     30.000      3.000     30.000
+receita                   900.000  9.000.000    900.000  9.000.000    900.000  9.000.000
+CPV: infraestrutura         9.104     82.163     10.148     86.757     14.742    122.363
+CPV: operação              34.700     34.700     34.700     88.700     41.100    158.300
+CPV: atendimento           75.600    756.000     75.600    756.000     75.600    756.000
+CPV total                 119.404    872.863    120.448    931.457    131.442  1.036.663
+margem bruta              780.596  8.127.137    779.552  8.068.543    768.558  7.963.337
+margem bruta (%)            86,7%      90,3%      86,6%      89,7%      85,4%      88,5%
+infra / receita              1,0%       0,9%       1,1%       1,0%       1,6%       1,4%
+CPV por condomínio          39,80      29,10      40,15      31,05      43,81      34,56
+CPV por boleto              0,362      0,265      0,365      0,282      0,398      0,314
+
+Fora do CPV (despesas operacionais): esteira R$ 1.660 e SOC 2 R$ 17.500 por mês.
+Silos com 3.000 condomínios: R$ 12.039 a mais que o pool, R$ 20,06 por isolado.
+Silos com 30.000 condomínios: R$ 163.801 a mais que o pool, R$ 27,30 por isolado.

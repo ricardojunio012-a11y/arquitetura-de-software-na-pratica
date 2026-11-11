@@ -1,0 +1,19 @@
+Capítulo 37, versão esquecimento: crypto-shredding, uma chave por titular
+
+1. Cadastro de 4 moradores e 9 eventos publicados
+2. Backup noturno com pg_dump, sem o esquema do cofre
+3. Carlos Menezes (titular 3, unidade 302) se muda
+   pede a cópia dos dados (art. 18, II): 1 cadastro, 1 cobrança, 3 eventos
+   e a eliminação: cadastro apagado e chave destruída
+4. Onde o nome, o CPF ou o e-mail dele ainda aparecem em claro
+   cadastro.moradores    0
+   cadastro.cobrancas    0
+   eventos.publicados    0
+   auditoria.trilha      0
+   backup noturno        0 linhas
+5. Tentar ler o que sobrou
+   eventos dele: 3 publicados, 0 legíveis
+   eventos dos outros: 6 publicados, 6 legíveis
+   backup restaurado: Ana Ribeiro, Bruno Teixeira, titular 3 ilegível, Daniela Souza
+6. Cobranças dele mantidas (obrigação legal): 1
+7. Trilha de auditoria: 2 registros, íntegra

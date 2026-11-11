@@ -1,0 +1,37 @@
+# Capítulo 31: nuvem, serviços gerenciados e dependência de fornecedor.
+services:
+  # A AWS emulada: S3, SQS e DynamoDB na região de São Paulo (sa-east-1).
+  # A 4.14.0 é a última versão do LocalStack que roda sem conta e sem token.
+  # Nenhuma porta é publicada no host: só a aplicação, na rede do Compose, a acessa
+  localstack:
+    image: localstack/localstack:4.14.0
+    environment:
+      SERVICES: s3,sqs,dynamodb
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://localhost:4566/_localstack/health"]
+      interval: 3s
+      retries: 40
+
+  # O Morada: provisiona a infraestrutura pelo SDK e roda o caso de uso
+  # pelas portas, com os adaptadores da AWS e com os em memória
+  app:
+    build: ./node
+    image: morada-cap31-node
+    environment:
+      AWS_ENDPOINT_URL: http://localstack:4566
+      AWS_REGION: sa-east-1
+      # Credenciais de teste: o LocalStack aceita qualquer valor
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+    volumes:
+      - ./saida:/dados/saida
+    depends_on:
+      localstack:
+        condition: service_healthy
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap31
+    working_dir: /cap31

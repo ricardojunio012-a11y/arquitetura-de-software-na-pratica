@@ -1,0 +1,9 @@
+Repositório: /tmp/morada
+commits: 389, de 2025-01-06 a 2026-06-26
+autores: 8; arquivos: 14
+
+Os quatro commits mais recentes:
+2026-06-26  Carla Dias      feat(manutencao): regra nova em chamados.ts
+2026-06-23  Ana Lima        fix(financeiro): ajuste em cobranca.ts
+2026-06-23  Elisa Prado     feat(comunicacao): regra nova em avisos.ts
+2026-06-23  Hugo Alves      feat(financeiro): regra nova em boleto.ts

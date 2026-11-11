@@ -1,0 +1,43 @@
+Pagamento da cobrança C-2026-11-0412, do aplicativo ao e-mail
+
+1. Com o traceparent no cabeçalho HTTP, na outbox e na mensagem da fila
+
+rastro 344ffb4b04230482ee6d3c313b1eee03: 11 trechos, 4 serviços, 2850 ms
+início  duração   serviço          trecho
+     0   452 ms  aplicativo       POST /v1/pagamentos (cliente)
+    12   428 ms  financeiro         POST /v1/pagamentos (servidor) 201
+    20     8 ms  financeiro           SELECT morada.cobrancas (cliente)
+    30   300 ms  financeiro           POST /autorizacoes (cliente) ERRO: tempo limite
+   370    48 ms  financeiro           POST /autorizacoes (cliente) 200
+   420     6 ms  financeiro           UPDATE morada.cobrancas (cliente)
+   426     5 ms  financeiro           INSERT morada.outbox (cliente)
+  1640     6 ms  financeiro-relay     publish pagamentos.confirmados (produtor)
+  2110   740 ms  comunicacao            process pagamentos.confirmados (consumidor)
+  2115    15 ms  comunicacao              montar aviso (interno)
+  2135   705 ms  comunicacao              smtp enviar (cliente)
+
+   o log do e-mail tem trace_id 344ffb4b04230482ee6d3c313b1eee03
+   o mesmo do pagamento: sim
+
+2. Sem a coluna traceparent na outbox
+   rastros: 2
+
+rastro 344ffb4b04230482ee6d3c313b1eee03: 7 trechos, 2 serviços, 452 ms
+início  duração   serviço          trecho
+     0   452 ms  aplicativo       POST /v1/pagamentos (cliente)
+    12   428 ms  financeiro         POST /v1/pagamentos (servidor) 201
+    20     8 ms  financeiro           SELECT morada.cobrancas (cliente)
+    30   300 ms  financeiro           POST /autorizacoes (cliente) ERRO: tempo limite
+   370    48 ms  financeiro           POST /autorizacoes (cliente) 200
+   420     6 ms  financeiro           UPDATE morada.cobrancas (cliente)
+   426     5 ms  financeiro           INSERT morada.outbox (cliente)
+
+rastro ea39c976cd8dc8805beae1a04ebf89c0: 4 trechos, 2 serviços, 1210 ms
+início  duração   serviço          trecho
+  1640     6 ms  financeiro-relay publish pagamentos.confirmados (produtor)
+  2110   740 ms  comunicacao        process pagamentos.confirmados (consumidor)
+  2115    15 ms  comunicacao          montar aviso (interno)
+  2135   705 ms  comunicacao          smtp enviar (cliente)
+
+   o log do e-mail tem trace_id ea39c976cd8dc8805beae1a04ebf89c0
+   quem procura pelo rastro do pagamento não encontra o e-mail

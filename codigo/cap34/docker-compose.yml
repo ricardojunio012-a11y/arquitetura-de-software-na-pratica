@@ -1,0 +1,17 @@
+# Capítulo 34: observabilidade e engenharia de confiabilidade (SRE).
+services:
+  # O rastro de um pagamento com o SDK do OpenTelemetry, as métricas RED, a amostragem
+  # e o SLO da API de pagamentos num mês simulado. Tudo roda num processo só, com
+  # relógio simulado e sementes fixas, sem publicar portas no host
+  app:
+    build: ./node
+    image: morada-cap34-node
+    volumes:
+      - ./saida:/dados/saida
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap34
+    working_dir: /cap34

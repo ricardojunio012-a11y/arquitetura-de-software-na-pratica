@@ -1,0 +1,12 @@
+renomear de uma vez: a migração e o código novo na mesma publicação
+  só a v1 (coluna celular)            200 operações: 0 erros, 0 leituras erradas
+  migração: ALTER TABLE moradores RENAME COLUMN celular TO telefone
+  v1 e v4 juntas, durante a troca     200 operações: 100 erros, 0 leituras erradas
+    erro: column "celular" of relation "moradores" does not exist
+  só a v4 (coluna telefone)           200 operações: 0 erros, 0 leituras erradas
+
+na outra ordem: o código novo sai antes da migração
+  v1 e v4 juntas, antes da migração   200 operações: 100 erros, 0 leituras erradas
+    erro: column "telefone" does not exist
+
+total: 200 erros e 0 leituras erradas

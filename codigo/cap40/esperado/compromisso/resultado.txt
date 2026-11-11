@@ -1,0 +1,14 @@
+COMPROMISSO DE USO: nós de aplicação, um mês de 30 dias
+  1.808 nós-hora; mínimo 2, máximo 6
+  compromisso        1 ano  economia    3 anos  economia
+  0 nós           R$ 1.294      0,0%  R$ 1.294      0,0%
+  1 nó            R$ 1.129     12,8%  R$ 1.046     19,2%
+  2 nós             R$ 963     25,5%    R$ 798     38,3%
+  3 nós           R$ 1.119     13,5%    R$ 871     32,7%
+  4 nós           R$ 1.446    -11,8%  R$ 1.115     13,8%
+  5 nós           R$ 1.773    -37,1%  R$ 1.359     -5,1%
+  6 nós           R$ 2.100    -62,4%  R$ 1.604    -24,0%
+
+BANCO db.m7g.large Multi-AZ, ligado o mês inteiro
+  sob demanda            R$ 1.750
+  reservado por 1 ano    R$ 1.348  economia de 23,0%

@@ -1,0 +1,64 @@
+ENTRADAS
+  condominios         3.000  condomínios (cap. 17)
+  mensalidade           300  R$ por condomínio por mês (cap. 17)
+  boletos               110  boletos por condomínio por mês (cap. 25)
+  pedidos            50.000  pedidos por condomínio por mês (cap. 34)
+  dolar              5,5000  R$ por US$ (cap. 12)
+  hora                  150  R$ por hora de engenharia (cap. 14)
+  pessoa             25.200  R$ por pessoa por mês (cap. 32)
+  no                 0,1301  US$ por hora, EC2 m7g.large (cap. 31)
+  cluster            0,1000  US$ por hora, plano de controle do EKS (cap. 32)
+  banco              0,4420  US$ por hora, RDS db.m7g.large Multi-AZ (cap. 17)
+  disco              0,4380  US$ por GB-mês, gp3 Multi-AZ (cap. 17)
+  plano1             0,0884  US$ por hora, Compute Savings Plan de 1 ano (cap. 40)
+  plano3             0,0675  US$ por hora, Compute Savings Plan de 3 anos (cap. 40)
+  reserva1           0,3403  US$ por hora, RDS reservado por 1 ano (cap. 40)
+  sinais             6,3333  R$ por milhão de pedidos (logs e rastros) (cap. 34)
+  ia                 1,1600  R$ por condomínio, assistente no modelo menor (cap. 20)
+  backup             1,8000  R$ por GB-mês de backup em outra conta (cap. 35)
+  segredos              190  R$ por mês, cofre de segredos (cap. 36)
+  dados              0,1000  GB por condomínio (cap. 31)
+  horasBanco              8  horas de operação por banco por mês (cap. 31)
+  ensaio                800  R$ por banco por mês, ensaio de restauração (cap. 35)
+  keycloak           0,2500  pessoa para operar o Keycloak (cap. 36)
+  esteira             1.660  R$ por mês, esteira de 40 engenheiros (cap. 33)
+  soc2               17.500  R$ por mês, SOC 2 a partir do 2º ano (cap. 37)
+  porNo               1.500  condomínios por nó (premissa)
+  porBanco            4.000  condomínios num db.m7g.large (premissa)
+  porAtendente        1.000  condomínios por pessoa de atendimento (premissa)
+  porPlataforma           5  instalações por pessoa de plataforma (premissa)
+  horasInstalacao         8  horas por instalação por mês (premissa)
+  porCelula           3.000  condomínios por célula (premissa)
+  isolados           0,2000  fração em administradoras que exigem silo (premissa)
+  porSilo               400  condomínios por silo (cap. 31)
+
+CUSTO DE UM MÊS: pool, 3.000 condomínios
+  plano de controle         infra, fixo            R$ 402
+  nós de aplicação          infra, degraus       R$ 1.045
+  bancos                    infra, degraus       R$ 1.775
+  disco                     infra, linear          R$ 723
+  backup                    infra, linear          R$ 540
+  logs e rastros            infra, linear          R$ 950
+  assistente                infra, linear        R$ 3.480
+  cofre de segredos         infra, fixo            R$ 190
+  operação de bancos        pessoas, degraus     R$ 2.000
+  operação de instalações   pessoas, degraus     R$ 1.200
+  plataforma                pessoas, degraus    R$ 25.200
+  Keycloak                  pessoas, fixo        R$ 6.300
+  atendimento               pessoas, degraus    R$ 75.600
+  infraestrutura                                 R$ 9.104
+  pessoas                                      R$ 110.300
+  total (CPV)                                  R$ 119.404
+
+POR UNIDADE
+  por condomínio: R$ 39,80 (infra R$ 3,03, pessoas R$ 36,77)
+  por boleto, dividindo tudo: R$ 0,362
+  CPV sobre a mensalidade: 13,3%
+
+SHOWBACK POR MÓDULO (rateio pelos pedidos)
+  financeiro           30,0%   R$ 34.777
+  portaria             35,0%   R$ 40.573
+  comunicação          20,0%   R$ 23.185
+  reservas e outros    15,0%   R$ 17.389
+  assistente          direto    R$ 3.480
+  por boleto, só o Financeiro: R$ 0,105

@@ -1,0 +1,16 @@
+região: sa-east-1
+primeira execução
+  criado     bucket  morada-prestacoes
+  criado     fila    morada-avisos-mortas
+  criado     fila    morada-avisos
+  criado     tabela  morada-documentos
+segunda execução
+  já existia bucket  morada-prestacoes
+  já existia fila    morada-avisos-mortas
+  já existia fila    morada-avisos
+  já existia tabela  morada-documentos
+conferência, lida da própria nuvem
+  bucket morada-prestacoes: sa-east-1, AES256, acesso público bloqueado
+  fila morada-avisos: visibilidade de 30 s, 3 entregas e depois morada-avisos-mortas
+  tabela morada-documentos: PAY_PER_REQUEST, chave condominio + mes, ACTIVE
+  etiquetas do bucket: modulo=comunicacao, projeto=morada

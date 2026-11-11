@@ -1,0 +1,17 @@
+# Capítulo 41: modernização de legado e arquitetura evolutiva.
+services:
+  # O legado da Beta (SQLite), o Morada (PostgreSQL embutido, PGlite), a camada
+  # anticorrupção e o proxy rodam num só contêiner, cada um no seu servidor HTTP,
+  # em portas internas. O tempo é simulado: nada é publicado em portas do host
+  app:
+    build: ./node
+    image: morada-cap41-node
+    volumes:
+      - ./saida:/dados/saida
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap41
+    working_dir: /cap41

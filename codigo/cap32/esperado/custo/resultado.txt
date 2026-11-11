@@ -1,0 +1,10 @@
+um mês (30 dias), só infraestrutura, preços da AWS em São Paulo, US$ 1 = R$ 5,50
+API: 301,3 milhões de pedidos; sem resposta a tempo: HPA 0, planejado 0
+
+forma                              US$/mês        R$/mês   base
+API no EKS, HPA e pré-escala        244,05   R$ 1.342,26   1.322 nós-hora + plano
+API no EKS, 24 réplicas fixas       821,38   R$ 4.517,57   5.760 nós-hora + plano
+API em 8 VMs com Kamal              749,38   R$ 4.121,57   8 máquinas fixas
+API em VMs com Kamal, planejado     296,74   R$ 1.632,08   2.281 nós-hora, 3 a 8 VMs
+PDF como função                       0,05       R$ 0,29   4.500 chamadas
+PDF no cluster                       46,89     R$ 257,92   Job + 1 réplica fixa

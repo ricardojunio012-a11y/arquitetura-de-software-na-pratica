@@ -1,0 +1,13 @@
+Morada: o servidor do banco é perdido
+
+1. Backup base: 3000 cobranças, 0 pagas, hash db12280b3f12
+2. 300 pagamentos; o segmento de WAL fecha e vai para o arquivo
+3. Mais 40 pagamentos, no segmento ainda aberto no servidor
+   cobranças pagas no primário: 340
+4. O servidor é perdido; restauração do backup base com todo o WAL
+   arquivado, sem alvo: a recuperação vai até o último segmento
+   cobranças pagas no banco restaurado: 300
+   pagamentos perdidos (RPO): 40, os do segmento que não chegou ao arquivo
+
+Com archive_timeout = 60, o segmento fecharia a cada minuto: o RPO ficaria
+limitado a cerca de um minuto de transações, em vez de "até encher 16 MB".

@@ -1,0 +1,27 @@
+Capítulo 37, versão trilha: a trilha de auditoria encadeada por hash
+
+1. Oito registros gravados pela aplicação
+   1 2026-10-20T09:00 sindica.ana consultou titular:3 0e60e1913b15
+   2 2026-10-20T09:05 portaria.joao registrou unidade:302 3d330b6ac4f1
+   3 2026-10-20T10:12 suporte.bruno exportou condominio:12 32dbd3fc5c38
+   4 2026-10-20T11:00 atendimento.lgpd recebeu pedido:88 aec3d6a4051b
+   5 2026-10-20T11:30 atendimento.lgpd exportou titular:3 ea6abb708f28
+   6 2026-10-20T11:31 atendimento.lgpd eliminou titular:3 924db3ac2b8b
+   7 2026-10-20T14:00 sindica.ana consultou titular:1 e51345be4cac
+   8 2026-10-20T23:00 sistema copiou backup:noturno d56ea1a24045
+   âncora publicada fora do banco: registro 8, d56ea1a24045
+   verificação: íntegra
+2. A aplicação tenta mudar o autor do registro 3
+   recusado (42501, permission denied for table trilha)
+3. O dono do banco tenta o mesmo
+   recusado (P0001, a trilha de auditoria só aceita inserções)
+4. O dono desliga os gatilhos e muda o autor do registro 3
+   verificação: registro 3: conteúdo alterado depois de gravado
+5. Ele muda o registro 3 e recalcula os hashes do 3 ao 8
+   verificação sem a âncora: íntegra
+   verificação com a âncora: âncora no registro 8: hash diferente do publicado
+6. Ele apaga o registro 5
+   verificação: registro 6: elo quebrado, o anterior não confere
+7. Ele apaga os registros 7 e 8, o fim da trilha
+   verificação sem a âncora: íntegra
+   verificação com a âncora: âncora no registro 8: ausente (a trilha termina no 6)

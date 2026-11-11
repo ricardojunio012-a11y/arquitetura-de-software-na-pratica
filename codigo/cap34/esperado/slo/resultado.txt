@@ -1,0 +1,27 @@
+API de pagamentos, novembro de 2026: 30 dias simulados, semente 34
+
+pedidos: 14.896.713   com erro: 7.681
+SLI de disponibilidade: 99,948%
+SLO interno de 99,95%: orçamento de 7.448 pedidos com erro, consumido 103%
+   orçamento esgotado em 30/11 11:13
+SLA do contrato, 99,9%: limite de 14.896 pedidos com erro, cumprido
+
+de onde veio o consumo                                      erros  do orçamento
+A  05/11 10:12 a 05/11 10:34  gateway degradado (8,00%)     3.568           48%
+B  18/11 03:07 a 18/11 03:08  réplica reinicia (20,00%)         9            0%
+C  22/11 14:00 a 22/11 22:00  banco recusa Pix (0,60%)      1.041           14%
+D  26/11 00:00 a 30/11 24:00  tempo limite curto (0,08%)    1.520           20%
+   o mês inteiro, ruído de fundo (0,01%)                    1.543           21%
+
+alertas por taxa de consumo do orçamento (multi-janela)
+regra                           dispara       para de disparar
+página, 1 h e 5 min, 14,4x      05/11 10:17   05/11 10:39
+página, 6 h e 30 min, 6x        05/11 10:18   05/11 11:03
+página, 6 h e 30 min, 6x        22/11 17:11   22/11 22:15
+tíquete, 3 d e 6 h, 1x          05/11 10:17   05/11 16:32
+tíquete, 3 d e 6 h, 1x          22/11 17:30   23/11 03:45
+tíquete, 3 d e 6 h, 1x          27/11 14:34   30/11 24:00
+
+alerta ingênuo: mais de 1% de erros nos últimos 5 minutos
+notificações: 9   de madrugada (0h às 6h): 3   que duraram até 5 minutos: 5
+por incidente: A 1, B 1, C 5, D 2; fora deles: 0

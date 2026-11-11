@@ -1,0 +1,20 @@
+                            em memória  na AWS (LocalStack)
+condomínio 101              publicada   publicada
+condomínio 102              publicada   publicada
+condomínio 102 de novo      repetida    repetida
+condomínio 103              publicada   publicada
+avisos enviados             3           3
+documentos do 102           1           1
+  101 2026-10: aviso enviado, PDF com 332 bytes
+  102 2026-10: aviso enviado, PDF com 359 bytes
+  103 2026-10: aviso enviado, PDF com 386 bytes
+mesmo resultado nos dois adaptadores: sim
+chamadas à AWS no fluxo: 21
+  DynamoDB PutItem          4
+  DynamoDB Query            1
+  S3 GetObject              3
+  S3 PutObject              4
+  SQS DeleteMessage         3
+  SQS GetQueueUrl           1
+  SQS ReceiveMessage        2
+  SQS SendMessage           3

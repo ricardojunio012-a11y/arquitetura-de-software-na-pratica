@@ -1,0 +1,3 @@
+{"ts":"2026-11-05T12:00:00.330Z","nivel":"aviso","servico":"financeiro","msg":"gateway sem resposta; nova tentativa","cobranca":"C-2026-11-0412","tentativa":1,"trace_id":"344ffb4b04230482ee6d3c313b1eee03","span_id":"f767dc42b146caed"}
+{"ts":"2026-11-05T12:00:00.432Z","nivel":"info","servico":"financeiro","msg":"pagamento confirmado","cobranca":"C-2026-11-0412","morador":"M-8812","trace_id":"344ffb4b04230482ee6d3c313b1eee03","span_id":"7f9440755db0f9ef"}
+{"ts":"2026-11-05T12:00:02.845Z","nivel":"info","servico":"comunicacao","msg":"e-mail de confirmação enviado","cobranca":"C-2026-11-0412","morador":"M-8812","trace_id":"344ffb4b04230482ee6d3c313b1eee03","span_id":"ea39c976cd8dc880"}

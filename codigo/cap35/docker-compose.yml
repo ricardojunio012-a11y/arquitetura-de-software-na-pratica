@@ -1,0 +1,73 @@
+# Capítulo 35: alta disponibilidade e recuperação de desastres.
+services:
+  # O banco de produção. Cada segmento de WAL completo é copiado para o volume
+  # "arquivo", que faz o papel do bucket de backups em outro lugar
+  banco:
+    image: postgres:17-alpine
+    entrypoint: ["sh", "/entrada.sh"]
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    volumes:
+      - ./banco/entrada.sh:/entrada.sh:ro
+      - ./banco/replicacao.sh:/docker-entrypoint-initdb.d/replicacao.sh:ro
+      - arquivo:/arquivo
+    healthcheck:
+      # Pela rede: durante a inicialização, o servidor temporário só ouve o socket local
+      test: ["CMD", "pg_isready", "-U", "morada", "-h", "127.0.0.1"]
+      interval: 2s
+      retries: 30
+
+  # Três réplicas da API de avisos, em duas zonas. Cada uma tem uma porta de
+  # administração (9090) para o experimento de caos derrubá-la e levantá-la
+  api-1:
+    build: ./node
+    image: morada-cap35-node
+    command: ["api"]
+    environment: { REPLICA: api-1, ZONA: a }
+    healthcheck: &saude
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:9090/saude"]
+      interval: 2s
+      retries: 30
+  api-2:
+    build: ./node
+    image: morada-cap35-node
+    command: ["api"]
+    environment: { REPLICA: api-2, ZONA: a }
+    healthcheck: *saude
+    depends_on: [api-1]
+  api-3:
+    build: ./node
+    image: morada-cap35-node
+    command: ["api"]
+    environment: { REPLICA: api-3, ZONA: b }
+    healthcheck: *saude
+    depends_on: [api-1]
+
+  # Roda os cenários: o backup, o acidente, a restauração e o caos
+  app:
+    build: ./node
+    image: morada-cap35-node
+    environment:
+      BANCO_URL: postgresql://morada:morada@banco:5432/morada
+    volumes:
+      - ./saida:/dados/saida
+      - arquivo:/arquivo:ro
+      - copias:/copias
+    depends_on:
+      banco: { condition: service_healthy }
+      api-1: { condition: service_healthy }
+      api-2: { condition: service_healthy }
+      api-3: { condition: service_healthy }
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap35
+    working_dir: /cap35
+
+volumes:
+  arquivo:
+  copias:

@@ -1,0 +1,19 @@
+registro decisoes-com-defeitos/: 7 arquivos
+  ADR-010  aceito                   Morada como monólito modular, com fronteiras verifi…
+  ADR-012  aceito                   Extrair só a Comunicação como serviço
+  ADR-021  aceito                   Metas de latência em percentis e teste de carga do …
+  ADR-028  aceito                   Tempo limite, anteparo e disjuntor em toda dependên…
+  ADR-033  aceito                   Esteira única com testes de arquitetura e canário
+  ADR-033  proposto                 Radar técnico do Morada revisto a cada trimestre
+  ADR-038  aprovado                 Decisões verificáveis viram funções de aptidão dete…
+funções de aptidão:
+  dados-proprios   protege ADR-010
+  latencia-painel  protege ADR-038
+resultado: 7 problemas
+  adr-012-comunicacao-como-servico.md: falta a seção "Quando revisitar"
+  adr-029-protecoes-de-dependencias.md: o título diz ADR-028
+  adr-038-funcoes-de-aptidao.md: situação inválida "aprovado"
+  ADR-033: número repetido em adr-033-esteira-unica.md e adr-033-radar-tecnico.md
+  ADR-033: substitui ADR-030, que não existe
+  ADR-038: substitui ADR-021, que continua "aceito"
+  função latencia-painel: ADR-038 está "aprovado"

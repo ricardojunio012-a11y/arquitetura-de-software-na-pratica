@@ -1,0 +1,43 @@
+# Um nome e um endereço estáveis na frente de réplicas que vêm e vão
+apiVersion: v1
+kind: Service
+metadata:
+  name: morada-api
+spec:
+  selector:
+    app: morada-api # todas as réplicas prontas com esta etiqueta
+  ports:
+    - name: http
+      port: 80
+      targetPort: http # a porta com este nome no contêiner
+---
+# A entrada pública (Gateway API): o caminho /v1 de api.morada.com.br vai para o
+# Service. O Gateway "entrada-publica" é da equipe de plataforma
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: morada-api
+spec:
+  parentRefs:
+    - name: entrada-publica
+  hostnames:
+    - api.morada.com.br
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /v1
+      backendRefs:
+        - name: morada-api
+          port: 80
+---
+# Numa manutenção de nós, nunca menos de 2 réplicas no ar
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: morada-api
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: morada-api

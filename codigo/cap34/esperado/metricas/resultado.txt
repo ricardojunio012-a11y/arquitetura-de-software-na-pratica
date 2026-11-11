@@ -1,0 +1,17 @@
+Dez minutos da API do Financeiro: 4.200 pedidos
+
+1. RED por rota (taxa, erros, duração)
+rota                   taxa  erros     p50     p95     p99  p95 pelos baldes
+POST /v1/pagamentos   2,0/s   1,9%  177 ms  325 ms  439 ms            441 ms
+GET  /v1/cobrancas    5,0/s   0,1%   39 ms   75 ms  101 ms             75 ms
+
+2. Cardinalidade do histograma de duração
+atributos                                séries   séries no Prometheus
+método, rota e status                         4                     68
+método, rota, status e condomínio         2.000                 34.000
+
+3. Amostragem de rastros (lento: acima de 400 ms)
+estratégia                          rastros  com erro    lentos
+guardar tudo                         4.200        27        21
+na cabeça, 10% pelo trace_id           411         2         2
+na cauda, erros, lentos e 10%          448        27        21

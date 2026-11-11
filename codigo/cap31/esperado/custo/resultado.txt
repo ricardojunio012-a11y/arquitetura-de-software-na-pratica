@@ -1,0 +1,9 @@
+                                          linhas  usa o SDK
+núcleo (prestacao.ts)                         30  não
+portas (portas.ts)                            33  não
+adaptadores da AWS (aws.ts)                  126  sim
+adaptadores em memória (memoria.ts)           53  não
+versão direta, sem portas (direto.ts)         90  sim
+com portas (núcleo + portas + AWS): 189 linhas; direta: 90 (2,1 vezes)
+arquivos do Morada que importam o SDK: aws.ts, clientes.ts, infra.ts
+chamadas à AWS no mesmo fluxo: direta 20, com portas 20

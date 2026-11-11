@@ -1,0 +1,16 @@
+# Capítulo 39: dívida técnica, pontos quentes e acoplamento de mudança.
+services:
+  # Gera o histórico git simulado do Morada dentro do contêiner, com autores e
+  # datas fixos, e o analisa. Nada é publicado no host além da pasta saida/
+  app:
+    build: ./node
+    image: morada-cap39-node
+    volumes:
+      - ./saida:/dados/saida
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap39
+    working_dir: /cap39

@@ -1,0 +1,134 @@
+{
+  "realm": "morada",
+  "enabled": true,
+  "accessTokenLifespan": 300,
+  "roles": {
+    "realm": [
+      { "name": "sindico", "description": "Síndico de um condomínio" },
+      { "name": "morador", "description": "Morador de uma unidade" },
+      { "name": "porteiro", "description": "Porteiro de um condomínio" },
+      { "name": "administradora", "description": "Administradora de condomínios" }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "morada-app",
+      "name": "Aplicativo do Morada (laboratório)",
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "redirectUris": ["http://localhost/*"],
+      "protocolMappers": [
+        {
+          "name": "audiencia-morada-api",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "config": {
+            "included.custom.audience": "morada-api",
+            "access.token.claim": "true",
+            "id.token.claim": "false"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "integracao-adm1",
+      "name": "Integração da Administradora Alfa",
+      "publicClient": false,
+      "secret": "${INTEGRACAO_SEGREDO}",
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true,
+      "protocolMappers": [
+        {
+          "name": "audiencia-morada-api",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "config": {
+            "included.custom.audience": "morada-api",
+            "access.token.claim": "true",
+            "id.token.claim": "false"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "morada-rotacao",
+      "name": "Rotina de troca de segredos",
+      "publicClient": false,
+      "secret": "${ROTACAO_SEGREDO}",
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true
+    }
+  ],
+  "users": [
+    {
+      "id": "0a000000-0000-4000-8000-000000000001",
+      "username": "ana",
+      "firstName": "Ana",
+      "lastName": "Moradora",
+      "email": "ana@morada.test",
+      "emailVerified": true,
+      "enabled": true,
+      "credentials": [{ "type": "password", "value": "${SENHA_USUARIOS}" }],
+      "realmRoles": ["morador"]
+    },
+    {
+      "id": "0a000000-0000-4000-8000-000000000002",
+      "username": "bruno",
+      "firstName": "Bruno",
+      "lastName": "Sindico",
+      "email": "bruno@morada.test",
+      "emailVerified": true,
+      "enabled": true,
+      "credentials": [{ "type": "password", "value": "${SENHA_USUARIOS}" }],
+      "realmRoles": ["sindico", "morador"]
+    },
+    {
+      "id": "0a000000-0000-4000-8000-000000000003",
+      "username": "carla",
+      "firstName": "Carla",
+      "lastName": "Porteira",
+      "email": "carla@morada.test",
+      "emailVerified": true,
+      "enabled": true,
+      "credentials": [{ "type": "password", "value": "${SENHA_USUARIOS}" }],
+      "realmRoles": ["porteiro"]
+    },
+    {
+      "id": "0a000000-0000-4000-8000-000000000004",
+      "username": "dora",
+      "firstName": "Dora",
+      "lastName": "Administradora",
+      "email": "dora@morada.test",
+      "emailVerified": true,
+      "enabled": true,
+      "credentials": [{ "type": "password", "value": "${SENHA_USUARIOS}" }],
+      "realmRoles": ["administradora"]
+    },
+    {
+      "id": "0a000000-0000-4000-8000-000000000005",
+      "username": "edu",
+      "firstName": "Edu",
+      "lastName": "Morador",
+      "email": "edu@morada.test",
+      "emailVerified": true,
+      "enabled": true,
+      "credentials": [{ "type": "password", "value": "${SENHA_USUARIOS}" }],
+      "realmRoles": ["morador"]
+    },
+    {
+      "username": "service-account-integracao-adm1",
+      "enabled": true,
+      "serviceAccountClientId": "integracao-adm1",
+      "realmRoles": ["administradora"]
+    },
+    {
+      "username": "service-account-morada-rotacao",
+      "enabled": true,
+      "serviceAccountClientId": "morada-rotacao",
+      "clientRoles": { "realm-management": ["view-clients", "manage-clients"] }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+5 objetos lidos de k8s/:
+  Deployment, HorizontalPodAutoscaler, Service, HTTPRoute, PodDisruptionBudget
+
+ok     o Deployment seleciona os seus pods ({"app":"morada-api"})
+ok     imagem de api com tag fixa (registro.morada.com.br/morada-api:2026.10.3)
+ok     api pede CPU e memória ({"cpu":"500m","memory":"512Mi"})
+ok     api tem limite de memória (512Mi)
+ok     api: vida e prontidão são verificações diferentes (/saude/vida e /saude/pronta)
+ok     api: a partida tem prazo próprio (60 s)
+ok     Service morada-api encontra os pods ({"app":"morada-api"})
+ok     Service morada-api: porta http existe no contêiner (http)
+ok     HTTPRoute morada-api aponta para um Service que existe (morada-api:80)
+ok     o HPA aponta para o Deployment (morada-api)
+ok     o HPA por CPU tem pedido de CPU em todos os contêineres (métrica cpu)
+ok     o PodDisruptionBudget deixa um nó ser esvaziado (minAvailable 2, minReplicas 3)
+
+para a simulação: 500m por réplica, de 3 a 30 réplicas, alvo de 60%,
+janela de descida de 300 s

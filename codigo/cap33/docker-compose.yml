@@ -1,0 +1,45 @@
+# Capítulo 33: entrega contínua, Infraestrutura como Código e plataforma.
+services:
+  # O banco do Morada: as migrações expandir/contrair e o banco criado pelo OpenTofu
+  banco:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada", "-h", "127.0.0.1"]
+      interval: 2s
+      retries: 30
+
+  # A "nuvem": o LocalStack imita a fila (SQS) e o bucket (S3) da AWS. A versão fica
+  # fixa na 4.14.0, a última que roda sem conta e sem token (veja o README)
+  nuvem:
+    image: localstack/localstack:4.14.0
+    environment:
+      SERVICES: s3,sqs
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:4566/_localstack/health"]
+      interval: 3s
+      retries: 40
+
+  app:
+    build: ./node
+    image: morada-cap33-node
+    environment:
+      BANCO_URL: postgresql://morada:morada@banco:5432/morada
+      NUVEM_URL: http://nuvem:4566
+    volumes:
+      - ./saida:/dados/saida
+    depends_on:
+      banco:
+        condition: service_healthy
+      nuvem:
+        condition: service_healthy
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap33
+    working_dir: /cap33

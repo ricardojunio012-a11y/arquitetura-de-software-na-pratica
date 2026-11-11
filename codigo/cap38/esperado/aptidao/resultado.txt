@@ -1,0 +1,22 @@
+registro: válido
+função dados-proprios (ADR-010): nenhum módulo lê nem grava a tabela de outro
+função latencia-painel (ADR-038): p95 do painel abaixo de 300 ms a 40 pedidos/s
+
+commit c1: painel de inadimplência com uma consulta agregada
+  dados-proprios   ok
+  latencia-painel  ok
+      p50 2 ms, p95 3 ms; 2,0 consultas por pedido (até 2)
+  => aprovado
+
+commit c2: reservas confere o débito direto na tabela de cobranças
+  dados-proprios   FALHOU
+      reservas/regras.ts:6 lê financeiro.cobrancas, de financeiro
+  latencia-painel  ok
+      p50 2 ms, p95 3 ms; 2,0 consultas por pedido (até 2)
+  => barrado; nada foi publicado
+
+commit c3: painel soma o débito unidade por unidade
+  dados-proprios   ok
+  latencia-painel  FALHOU
+      p50 981 ms, p95 2049 ms; 124,6 consultas por pedido (até 200)
+  => barrado; nada foi publicado

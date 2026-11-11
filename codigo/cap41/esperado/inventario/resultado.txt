@@ -1,0 +1,15 @@
+30 dias de uso do aplicativo da Beta, medidos no proxy
+rota                  chamadas  prédios  estado
+GET aptos                   23        4  apto
+GET rateios                113        4  rateio
+POST baixa                  31        4  rateio
+GET inadimplentes           59        4  rateio
+POST comunicados            15        4  comunicado
+GET dimob                    0        0  rateio (relatório anual)
+total                      241
+
+fatias pelo estado que cada rota toca:
+  comunicados: estado próprio, pode ir para o Morada sozinha
+  aptos, rateios, baixa, inadimplentes: o mesmo estado; vão juntas,
+    por cliente, depois que os dados do cliente forem migrados
+  dimob: nenhuma chamada em 30 dias; candidata a desligar sem migrar

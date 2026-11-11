@@ -1,0 +1,8 @@
+dia 5: 16.128.585 pedidos; pico de 767 pedidos/s às 08h01
+réplica: 500m de CPU pedida; nó: 2 vCPU, 3 réplicas por nó
+
+cenário                         lentos  sem resposta  réplicas  nós-hora  réplicas-hora
+3 réplicas fixas                76,16%        14,52%     até 3      24,0           72,0
+24 réplicas fixas                0,00%         0,00%    até 24     192,0          576,0
+HPA (3 a 30, alvo 60%)           0,78%         0,02%    até 24      65,8          173,7
+HPA com pré-escala às 7h30       0,00%         0,00%    até 25      82,1          190,6

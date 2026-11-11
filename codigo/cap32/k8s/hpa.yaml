@@ -1,0 +1,23 @@
+# O escalonamento automático da API: entre 3 e 30 réplicas, mirando 60% da CPU
+# pedida. O laboratório lê este arquivo e simula o controlador com estes valores
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: morada-api
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: morada-api
+  minReplicas: 3
+  maxReplicas: 30
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 60 # % do pedido de CPU (requests), não do nó
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300 # o padrão: só reduz depois de 5 minutos

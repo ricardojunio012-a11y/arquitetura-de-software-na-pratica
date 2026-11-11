@@ -1,0 +1,22 @@
+legado: 3 prédios com o CNPJ 12.345.678/0001-90
+  P0101 RES ACACIAS TORRE A; P0102 RES ACACIAS TORRE B; P0103 RES ACACIAS TORRE C
+  24 aptos do tipo A, 10 do tipo G (vagas)
+  102 rateios de 08/2026 a 10/2026
+
+Morada: 1 condomínio, c12345678 ("RES ACACIAS")
+  bloco A: 8 unidades
+  bloco B: 8 unidades
+  bloco C: 8 unidades
+  8 vagas, cada uma ligada a uma unidade
+  96 cobranças
+  quarentena: 2
+    P0101/G-09: vaga sem unidade vinculada
+    P0101/G-10: vaga sem unidade vinculada
+
+exemplos, antes e depois:
+  apto P0102/0201 tipo A fração 0,036496
+    -> unidade c12345678-B-0201, bloco B, fração 0.036496
+  apto P0101/G-03 tipo G vínculo P0102/0101
+    -> vaga c12345678-G-03 da unidade c12345678-B-0101
+  rateio P0101/0102 10/2026 10/10/2026 1.258,49 pago S 05/10/2026
+    -> cobrança c12345678-A-0102.2026-10, 2026-10-10, R$ 1.258,49, paga em 2026-10-05

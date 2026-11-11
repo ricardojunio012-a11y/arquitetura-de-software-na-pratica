@@ -1,0 +1,15 @@
+infraestrutura de homologação do Morada (OpenTofu, LocalStack e PostgreSQL)
+1. plano inicial: 6 a criar, 0 a mudar, 0 a destruir
+2. aplicado; o que existe, segundo os SDKs:
+   fila morada-homologacao-cobrancas: visibilidade de 30 s
+     mortas após 5 recebimentos, em morada-homologacao-cobrancas-mortas
+     etiquetas: ambiente=homologacao, gerenciado=opentofu, projeto=morada
+   bucket morada-homologacao-prestacao-de-contas: versionamento Enabled
+   banco morada_relatorios: dono relatorios
+3. plano de novo, sem mudar nada (saída 0): 0 a criar, 0 a mudar, 0 a destruir
+4. alguém muda a visibilidade da fila para 300 s, direto no console
+5. plano (saída 2): 0 a criar, 1 a mudar, 0 a destruir
+     aws_sqs_queue.cobrancas.visibility_timeout_seconds: 300 -> 30
+6. aplicado: visibilidade de volta a 30 s
+7. plano de destruição: 0 a criar, 0 a mudar, 6 a destruir
+8. destruído

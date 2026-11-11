@@ -1,0 +1,17 @@
+1. varredura de segredos no código
+   exemplos/antes: 3 achado(s)
+     antes/config.ts:7 segredo em texto adm1…
+     antes/config.ts:8 URL com senha Mora…
+     antes/config.ts:9 chave de acesso da AWS AKIA…
+   exemplos/depois: 0 achado(s)
+2. a integração da administradora, com o segredo lido do cofre
+   variáveis de ambiente com segredo: 0
+   token com o segredo do cofre: 200
+   boletos do C-01 (administrado pela ADM-1): 200, 4
+   boletos do C-02 (de outra administradora): 404
+   token com o segredo que estava no código: 401 unauthorized_client
+3. troca do segredo (rotação) pela API de administração do Keycloak
+   segredo novo gerado e gravado no cofre: true
+   token com o segredo antigo: 401 unauthorized_client
+   token com o segredo novo: 200
+   token emitido ANTES da troca, na API: 200 (vale até expirar)

@@ -1,0 +1,59 @@
+# Capítulo 36: arquitetura de segurança.
+services:
+  # O cofre do laboratório: gera os segredos num volume, fora do código e do Git
+  cofre:
+    image: alpine:3.22
+    entrypoint: ["sh", "/gerar-segredos.sh"]
+    volumes:
+      - ./keycloak/gerar-segredos.sh:/gerar-segredos.sh:ro
+      - segredos:/segredos
+
+  # O provedor de identidade: OpenID Connect, com os papéis do Morada
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.4
+    entrypoint: ["bash", "/iniciar.sh"]
+    environment:
+      KC_HEALTH_ENABLED: "true"
+      KC_LOG_LEVEL: info
+    volumes:
+      - ./keycloak/iniciar.sh:/iniciar.sh:ro
+      - ./keycloak/morada-realm.json:/opt/keycloak/data/import/morada-realm.json:ro
+      - segredos:/run/segredos:ro
+    depends_on:
+      cofre:
+        condition: service_completed_successfully
+    healthcheck:
+      # A imagem não tem curl: o teste abre a porta de gestão (9000) pelo bash
+      test:
+        - CMD-SHELL
+        - >-
+          exec 3<>/dev/tcp/127.0.0.1/9000 &&
+          printf 'GET /health/ready HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n' >&3 &&
+          grep -q '"UP"' <&3
+      interval: 3s
+      retries: 20
+      # Numa máquina carregada, a primeira subida leva alguns minutos
+      start_period: 600s
+
+  # A API do Morada e os roteiros do laboratório (sem portas publicadas)
+  app:
+    build: ./node
+    image: morada-cap36-node
+    environment:
+      EMISSOR: http://keycloak:8080/realms/morada
+    volumes:
+      - ./saida:/dados/saida
+      - segredos:/run/segredos
+    depends_on:
+      keycloak:
+        condition: service_healthy
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap36
+    working_dir: /cap36
+
+volumes:
+  segredos:
