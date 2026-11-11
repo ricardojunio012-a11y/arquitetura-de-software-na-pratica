@@ -1,0 +1,51 @@
+# Capítulo 22: escalabilidade horizontal e balanceamento de carga.
+x-api: &api
+  build: ./node
+  image: morada-cap22-node
+  entrypoint: ["node", "--disable-warning=ExperimentalWarning", "src/api.ts"]
+  environment: &ambiente
+    REDIS_URL: redis://redis:6379
+  depends_on:
+    - redis
+
+services:
+  # Três réplicas iguais da API, sem estado próprio... ou quase
+  api1:
+    <<: *api
+    environment: { <<: *ambiente, NOME: api1 }
+  api2:
+    <<: *api
+    environment: { <<: *ambiente, NOME: api2 }
+  api3:
+    <<: *api
+    environment: { <<: *ambiente, NOME: api3 }
+
+  # O balanceador na frente delas
+  balanceador:
+    image: nginx:1.27-alpine
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api1
+      - api2
+      - api3
+
+  # Onde as sessões ficam quando saem da memória das réplicas
+  redis:
+    image: redis:7.4-alpine
+
+  # Roda os cenários contra o balanceador
+  app:
+    build: ./node
+    image: morada-cap22-node
+    volumes:
+      - ./saida:/dados/saida
+    depends_on:
+      - balanceador
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap22
+    working_dir: /cap22

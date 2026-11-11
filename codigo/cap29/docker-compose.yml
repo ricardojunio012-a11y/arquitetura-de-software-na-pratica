@@ -1,0 +1,16 @@
+# Capítulo 29: resiliência e modos de falha.
+services:
+  # O gateway de pagamento fica fora do ar e depois instável; o Morada aplica as
+  # proteções uma por vez. Tudo roda num relógio simulado, sem esperar de verdade
+  app:
+    build: ./node
+    image: morada-cap29-node
+    volumes:
+      - ./saida:/dados/saida
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap29
+    working_dir: /cap29

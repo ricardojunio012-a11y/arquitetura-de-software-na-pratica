@@ -1,0 +1,5 @@
+versão: corrigido
+rota: GET /condominios/7/inadimplentes
+consultas ao banco por pedido: 1
+unidades na resposta: 120, 86 com valor em aberto
+resumo da resposta (sha256): 5edb2173ec11

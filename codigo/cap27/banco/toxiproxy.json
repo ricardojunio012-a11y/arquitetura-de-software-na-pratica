@@ -1,0 +1,14 @@
+[
+  {
+    "name": "replicacao",
+    "listen": "0.0.0.0:5433",
+    "upstream": "primario:5432",
+    "enabled": true
+  },
+  {
+    "name": "candidata",
+    "listen": "0.0.0.0:5434",
+    "upstream": "primario:5432",
+    "enabled": true
+  }
+]

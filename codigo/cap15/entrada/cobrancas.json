@@ -1,0 +1,42 @@
+[
+  {
+    "id": "CB-01",
+    "condominio": "C-01",
+    "unidade": "101",
+    "vencimento": "2026-09-10",
+    "valorCentavos": 45000,
+    "situacao": "paga"
+  },
+  {
+    "id": "CB-02",
+    "condominio": "C-01",
+    "unidade": "102",
+    "vencimento": "2026-10-10",
+    "valorCentavos": 45000,
+    "situacao": "aberta"
+  },
+  {
+    "id": "CB-03",
+    "condominio": "C-01",
+    "unidade": "103",
+    "vencimento": "2026-10-10",
+    "valorCentavos": 52000,
+    "situacao": "aberta"
+  },
+  {
+    "id": "CB-04",
+    "condominio": "C-01",
+    "unidade": "104",
+    "vencimento": "2026-10-10",
+    "valorCentavos": 45000,
+    "situacao": "aberta"
+  },
+  {
+    "id": "CB-05",
+    "condominio": "C-02",
+    "unidade": "201",
+    "vencimento": "2026-10-05",
+    "valorCentavos": 38000,
+    "situacao": "aberta"
+  }
+]

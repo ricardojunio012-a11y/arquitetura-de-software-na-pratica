@@ -1,0 +1,34 @@
+base de conhecimento: 17 trechos
+
+[12] Qual é o horário de silêncio?
+     O horário de silêncio vai das 22h às 8h, todos os dias, e nesse período não são permitidos barulhos, música alta ou obras. (regimento)
+     origem: modelo, 123 tokens, 2 trecho(s) descartado(s)
+[12] Qual é o horário de silêncio?
+     O horário de silêncio vai das 22h às 8h, todos os dias, e nesse período não são permitidos barulhos, música alta ou obras. (regimento)
+     origem: cache, 0 tokens
+[12] Qual é a taxa de reserva do salão de festas?
+     A taxa de reserva do salão de festas é de R$ 180,00, cobrada no boleto do mês seguinte. (regimento)
+     origem: modelo, 164 tokens, 1 trecho(s) descartado(s)
+[12] Qual é o horário da churrasqueira?
+     Não encontrei essa informação nos documentos do condomínio.
+     origem: modelo, 0 tokens, 3 trecho(s) descartado(s)
+[15] A taxa de condomínio está isenta?
+     Não encontrei essa informação nos documentos do condomínio.
+     origem: modelo, 103 tokens, 2 trecho(s) descartado(s)
+[15] Posso fazer mudança no sábado?
+     Mudanças podem ser feitas de segunda a sábado; no sábado, a mudança só é permitida até as 14h. (regimento)
+     origem: modelo, 138 tokens, 1 trecho(s) descartado(s)
+[20] Qual é o horário da academia?
+     O horário da academia vai das 6h às 23h, e menores de 16 anos só podem usá-la acompanhados de um responsável. (regimento)
+     origem: modelo, 127 tokens, 1 trecho(s) descartado(s)
+[20] Quantas bicicletas posso guardar no bicicletário?
+     O bicicletário é de uso livre dos moradores, e cada unidade pode guardar até duas bicicletas. (regimento)
+     origem: modelo, 114 tokens, 2 trecho(s) descartado(s)
+[20] Qual é o horário de silêncio?
+     O limite diário do assistente foi atingido. Tente amanhã.
+     origem: limite, 0 tokens, 2 trecho(s) descartado(s)
+
+tokens gastos no dia por condomínio:
+  12: 287 de 2000
+  15: 241 de 2000
+  20: 241 de 250

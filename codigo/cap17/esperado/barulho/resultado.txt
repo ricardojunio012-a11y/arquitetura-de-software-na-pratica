@@ -1,0 +1,13 @@
+== sem limite
+condomínio 1: 10 pedidos, 10 atendidos, 0 recusados, espera média 864 ms, máxima 1719 ms
+condomínio 2: 10 pedidos, 10 atendidos, 0 recusados, espera média 873 ms, máxima 1728 ms
+condomínio 3: 10 pedidos, 10 atendidos, 0 recusados, espera média 882 ms, máxima 1737 ms
+condomínio 4: 10 pedidos, 10 atendidos, 0 recusados, espera média 891 ms, máxima 1746 ms
+condomínio 7: 250 pedidos, 250 atendidos, 0 recusados, espera média 965 ms, máxima 1894 ms
+
+== com limite por condomínio (rajada de 10, 20 por segundo)
+condomínio 1: 10 pedidos, 10 atendidos, 0 recusados, espera média 15 ms, máxima 59 ms
+condomínio 2: 10 pedidos, 10 atendidos, 0 recusados, espera média 24 ms, máxima 68 ms
+condomínio 3: 10 pedidos, 10 atendidos, 0 recusados, espera média 33 ms, máxima 77 ms
+condomínio 4: 10 pedidos, 10 atendidos, 0 recusados, espera média 42 ms, máxima 86 ms
+condomínio 7: 250 pedidos, 29 atendidos, 221 recusados, espera média 28 ms, máxima 94 ms

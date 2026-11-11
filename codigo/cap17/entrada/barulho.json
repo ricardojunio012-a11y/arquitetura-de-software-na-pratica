@@ -1,0 +1,13 @@
+{
+  "descricao": "Um segundo de pedidos à API: o condomínio 7 tem uma integração com defeito que dispara um pedido a cada 4 ms; os outros quatro fazem um pedido a cada 100 ms.",
+  "duracaoMs": 1000,
+  "servicoMs": 10,
+  "clientes": [
+    { "condominio": 1, "inicioMs": 1, "intervaloMs": 100 },
+    { "condominio": 2, "inicioMs": 2, "intervaloMs": 100 },
+    { "condominio": 3, "inicioMs": 3, "intervaloMs": 100 },
+    { "condominio": 4, "inicioMs": 4, "intervaloMs": 100 },
+    { "condominio": 7, "inicioMs": 0, "intervaloMs": 4 }
+  ],
+  "limite": { "rajada": 10, "porSegundo": 20 }
+}

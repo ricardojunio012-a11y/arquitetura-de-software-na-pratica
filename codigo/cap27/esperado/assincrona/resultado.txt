@@ -1,0 +1,9 @@
+replicação assíncrona
+antes: líder 22h, réplica 22h
+a rede entre o líder e a réplica é cortada
+escrita no líder: confirmada
+leitura no líder: 23h
+leitura na réplica: 22h (antiga)
+a rede volta
+a réplica alcança o líder
+depois: líder 23h, réplica 23h

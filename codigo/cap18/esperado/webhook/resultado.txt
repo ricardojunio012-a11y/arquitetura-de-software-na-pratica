@@ -1,0 +1,21 @@
+== receptor ingênuo
+msg_01: 200 aplicado: C-101 cobranca.paga
+msg_01: 200 aplicado: C-101 cobranca.paga
+msg_02: 200 aplicado: C-102 cobranca.paga
+msg_04: 200 aplicado: C-103 cobranca.estornada
+msg_03: 200 aplicado: C-103 cobranca.paga
+msg_05: 200 aplicado: C-104 cobranca.paga
+msg_06: 200 aplicado: C-105 cobranca.paga
+cobranças: C-101 paga | C-102 paga | C-103 paga | C-104 paga | C-105 paga
+pagamentos registrados: 6, R$ 2.860,00
+
+== receptor robusto
+msg_01: 200 aplicado: C-101 cobranca.paga
+msg_01: 200 repetida: ignorada
+msg_02: 200 aplicado: C-102 cobranca.paga
+msg_04: 200 aplicado: C-103 cobranca.estornada
+msg_03: 200 ignorada: versão 2 não é mais nova que a 3
+msg_05: 401 assinatura inválida
+msg_06: 401 fora da janela de 5 minutos
+cobranças: C-101 paga | C-102 paga | C-103 estornada | C-104 aberta | C-105 estornada
+pagamentos registrados: 2, R$ 970,00

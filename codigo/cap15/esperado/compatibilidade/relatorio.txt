@@ -1,0 +1,12 @@
+a-campo-novo.yaml: compatível
+  + GET /v1/condominios/{condominio}/cobrancas: parâmetro opcional novo: vencimentoAte
+  + GET /v1/condominios/{condominio}/cobrancas 200: campo novo: dados[].linhaDigitavel
+b-renomear.yaml: INCOMPATÍVEL
+  - GET /v1/condominios/{condominio}/cobrancas 200: campo removido: dados[].valorCentavos
+  + GET /v1/condominios/{condominio}/cobrancas 200: campo novo: dados[].valor
+c-obrigatorio.yaml: INCOMPATÍVEL
+  - POST /v1/pagamentos pedido: campo novo obrigatório: metodo
+d-enum.yaml: INCOMPATÍVEL
+  - GET /v1/condominios/{condominio}/cobrancas 200: valor novo no enum: dados[].situacao = vencida
+
+propostas incompatíveis: 3 de 4

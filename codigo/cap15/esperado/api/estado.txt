@@ -1,0 +1,7 @@
+pagamentos registrados: 2
+  PG-0001: cobrança CB-02, 45000 centavos
+  PG-0002: cobrança CB-05, 38000 centavos
+cobranças pagas: CB-01, CB-02, CB-05
+chaves de idempotência guardadas:
+  ADM-A: 8d1f-01, 8d1f-02, 8d1f-03
+  ADM-B: 5c2e-01, 8d1f-01

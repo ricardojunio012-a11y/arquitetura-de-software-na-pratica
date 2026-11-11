@@ -1,0 +1,36 @@
+# Capítulo 15: design de APIs.
+# A linguagem vem do arquivo .env (LINGUAGEM=node|php|python|java).
+services:
+  # A API pública do Morada, o roteiro de requisições e as ferramentas de contrato
+  app:
+    build: ./${LINGUAGEM:-node}
+    # Uma imagem por linguagem: trocar o .env não reaproveita a imagem de outra
+    image: morada-cap15-${LINGUAGEM:-node}
+    environment:
+      BANCO_URL: postgresql://morada:morada@banco:5432/morada
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./openapi:/dados/openapi:ro
+      - ./saida:/dados/saida
+    depends_on:
+      banco:
+        condition: service_healthy
+
+  # Cobranças, pagamentos e chaves de idempotência
+  banco:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap15
+    working_dir: /cap15

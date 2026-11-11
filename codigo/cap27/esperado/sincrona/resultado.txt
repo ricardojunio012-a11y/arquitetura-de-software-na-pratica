@@ -1,0 +1,7 @@
+replicação síncrona
+antes: líder 22h, réplica 22h
+a rede entre o líder e a réplica é cortada
+escrita no líder: sem confirmação depois de 2 s (esperando a réplica)
+a rede volta
+a réplica recebe a escrita, e o líder enfim a confirma
+depois: líder 23h, réplica 23h

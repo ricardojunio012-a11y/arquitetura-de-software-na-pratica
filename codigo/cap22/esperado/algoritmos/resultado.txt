@@ -1,0 +1,5 @@
+20000 pedidos, 3 servidores (o terceiro duas vezes mais lento)
+rodízio (round robin):      mediana 13 ms, p99 714 ms
+menos conexões:             mediana 11 ms, p99 146 ms
+duas escolhas aleatórias:   mediana 13 ms, p99 216 ms
+hash do condomínio:         mediana 20 ms, p99 329 ms

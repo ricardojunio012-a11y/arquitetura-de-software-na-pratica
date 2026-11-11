@@ -1,0 +1,28 @@
+1. relatório do síndico do condomínio 12, sem RLS
+   condomínio 12 | unidade 101 | Ana Ribeiro | 45000 centavos
+   condomínio 12 | unidade 204 | Carla Nunes | 52000 centavos
+   condomínio 15 | unidade 11 | Davi Rocha | 38000 centavos  <- outro condomínio
+   condomínio 15 | unidade 12 | Elisa Prado | 38000 centavos  <- outro condomínio
+   condomínio 20 | unidade A-3 | Fábio Costa | 61000 centavos  <- outro condomínio
+   linhas de outros condomínios: 3
+
+2. o mesmo relatório, com RLS
+   condomínio 12 | unidade 101 | Ana Ribeiro | 45000 centavos
+   condomínio 12 | unidade 204 | Carla Nunes | 52000 centavos
+   linhas de outros condomínios: 0
+
+3. com RLS, numa transação sem condomínio definido
+   nenhuma linha
+   linhas de outros condomínios: 0
+
+4. com RLS, o condomínio 12 tenta gravar uma cobrança do 15
+   recusada pelo banco: a linha não passa na política de RLS
+5. com RLS, a administradora 3, que administra os condomínios 12 e 15
+   condomínio 12 | unidade 101 | Ana Ribeiro | 45000 centavos
+   condomínio 12 | unidade 204 | Carla Nunes | 52000 centavos
+   condomínio 15 | unidade 11 | Davi Rocha | 38000 centavos
+   condomínio 15 | unidade 12 | Elisa Prado | 38000 centavos
+   linhas de outros condomínios: 0
+
+6. com RLS, a administradora 3 tenta gravar uma cobrança do 20
+   recusada pelo banco: a linha não passa em nenhuma política

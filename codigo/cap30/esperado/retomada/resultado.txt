@@ -1,0 +1,16 @@
+o orquestrador caiu depois da cobrança, antes de gravar o progresso
+saga concluida
+chamadas ao serviço de cobrança: 2
+histórico do orquestrador:
+  concluído: contrato
+  retomada depois de 1 passo(s)
+  concluído: cobranca
+  concluído: provisionamento
+  concluído: importacao
+  concluído: boas-vindas
+estado final nos serviços:
+  contrato:     assinado
+  lançamentos:  cobranca R$ 890,00
+  tenant:       ativo
+  moradores:    40
+  boas-vindas:  enviado a 40

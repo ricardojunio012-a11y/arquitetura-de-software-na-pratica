@@ -1,0 +1,7 @@
+== sem pub/sub entre as réplicas
+morador da A-101 (conectado à api1): visitante para A-101: Carla (via api1)
+morador da B-202 (conectado à api2): nada
+
+== com pub/sub entre as réplicas
+morador da A-101 (conectado à api1): visitante para A-101: Carla (via api1)
+morador da B-202 (conectado à api2): visitante para B-202: Davi (via api2)

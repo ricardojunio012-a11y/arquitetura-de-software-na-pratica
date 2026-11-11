@@ -1,0 +1,32 @@
+# Capítulo 25: processamento assíncrono e filas no system design.
+services:
+  # A geração mensal de boletos: uma fila no PostgreSQL e workers que a consomem
+  app:
+    build: ./node
+    image: morada-cap25-node
+    environment:
+      BANCO_URL: postgresql://morada:morada@banco:5432/morada
+    volumes:
+      - ./sql:/dados/sql:ro
+      - ./saida:/dados/saida
+    depends_on:
+      banco:
+        condition: service_healthy
+
+  banco:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap25
+    working_dir: /cap25

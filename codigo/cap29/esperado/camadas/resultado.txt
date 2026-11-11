@@ -1,0 +1,4 @@
+100 pagamentos, gateway fora do ar, três camadas entre o morador e o gateway
+  3 tentativas em cada camada              2700 chamadas
+  3 tentativas só na camada de cobrança     300 chamadas
+  3 em cada camada, com orçamento de 10%    163 chamadas

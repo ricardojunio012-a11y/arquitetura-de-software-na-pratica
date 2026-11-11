@@ -1,0 +1,8 @@
+gateway: normal até 1 s, fora do ar até 4 s, instável até 6 s
+                              avisos em 200 ms  maior espera  pagamentos  chamadas
+sem proteção                        88 de 300       4250 ms   64 de 120       120
++ tempo limite de 300 ms           300 de 300          5 ms   43 de 120       120
++ 3 tentativas com variação        185 de 300        708 ms   74 de 120       249
++ disjuntor                        300 de 300        101 ms   52 de 120       103
++ anteparo de 4 vagas              300 de 300          5 ms   39 de 120        79
+só o anteparo                      300 de 300          5 ms   20 de 120        24

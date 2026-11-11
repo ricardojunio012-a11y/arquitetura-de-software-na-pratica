@@ -1,0 +1,48 @@
+# Capítulo 26: tempo real e borda.
+x-api: &api
+  build: ./node
+  image: morada-cap26-node
+  entrypoint: ["node", "--disable-warning=ExperimentalWarning", "src/api.ts"]
+  environment: &ambiente
+    REDIS_URL: redis://redis:6379
+  depends_on:
+    - redis
+
+services:
+  # Duas réplicas da API, cada uma com os WebSockets dos moradores conectados a ela
+  api1:
+    <<: *api
+    environment: { <<: *ambiente, NOME: api1 }
+  api2:
+    <<: *api
+    environment: { <<: *ambiente, NOME: api2 }
+
+  # O pub/sub que liga as réplicas
+  redis:
+    image: redis:7.4-alpine
+
+  # O broker MQTT da portaria
+  mqtt:
+    image: eclipse-mosquitto:2.0.20
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+
+  # Roda os cenários: moradores, porteiro e dispositivo da portaria
+  app:
+    build: ./node
+    image: morada-cap26-node
+    environment:
+      MQTT_URL: mqtt://mqtt:1883
+    volumes:
+      - ./saida:/dados/saida
+    depends_on:
+      - api1
+      - api2
+      - mqtt
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap26
+    working_dir: /cap26

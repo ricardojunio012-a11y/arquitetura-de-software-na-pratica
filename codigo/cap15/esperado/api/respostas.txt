@@ -1,0 +1,77 @@
+1. primeira página das cobranças em aberto
+   GET /v1/condominios/C-01/cobrancas?situacao=aberta&limite=2 (Morada-Administradora: ADM-A)
+   → 200 application/json
+   {"dados":[{"id":"CB-02","unidade":"102","vencimento":"2026-10-10","valorCentavos":45000,"situacao":"aberta"},{"id":"CB-03","unidade":"103","vencimento":"2026-10-10","valorCentavos":52000,"situacao":"aberta"}],"proximo":"Q0ItMDM"}
+
+2. segunda página, com o cursor da primeira
+   GET /v1/condominios/C-01/cobrancas?situacao=aberta&limite=2&cursor=Q0ItMDM (Morada-Administradora: ADM-A)
+   → 200 application/json
+   {"dados":[{"id":"CB-04","unidade":"104","vencimento":"2026-10-10","valorCentavos":45000,"situacao":"aberta"}],"proximo":null}
+
+3. limite fora do permitido
+   GET /v1/condominios/C-01/cobrancas?limite=500 (Morada-Administradora: ADM-A)
+   → 400 application/problem+json
+   {"type":"https://api.morada.example/problemas/limite-invalido","title":"Limite inválido","status":400,"detail":"limite deve estar entre 1 e 100, recebido 500"}
+
+4. condomínio que não existe
+   GET /v1/condominios/C-99/cobrancas (Morada-Administradora: ADM-A)
+   → 404 application/problem+json
+   {"type":"https://api.morada.example/problemas/condominio-inexistente","title":"Condomínio não encontrado","status":404,"detail":"não existe o condomínio C-99"}
+
+5. pagamento da cobrança CB-02
+   POST /v1/pagamentos (Morada-Administradora: ADM-A, Idempotency-Key: 8d1f-01)
+   {"cobranca":"CB-02","valorCentavos":45000}
+   → 201 application/json
+   {"id":"PG-0001","cobranca":"CB-02","valorCentavos":45000,"situacao":"confirmado"}
+
+6. o mesmo pedido, repetido depois de um tempo esgotado
+   POST /v1/pagamentos (Morada-Administradora: ADM-A, Idempotency-Key: 8d1f-01)
+   {"cobranca":"CB-02","valorCentavos":45000}
+   → 201 application/json
+   {"id":"PG-0001","cobranca":"CB-02","valorCentavos":45000,"situacao":"confirmado"}
+
+7. a mesma chave com outro valor
+   POST /v1/pagamentos (Morada-Administradora: ADM-A, Idempotency-Key: 8d1f-01)
+   {"cobranca":"CB-02","valorCentavos":40000}
+   → 422 application/problem+json
+   {"type":"https://api.morada.example/problemas/chave-reutilizada","title":"Chave de idempotência reutilizada","status":422,"detail":"a chave 8d1f-01 já foi usada com outro pedido"}
+
+8. pagamento sem chave de idempotência
+   POST /v1/pagamentos (Morada-Administradora: ADM-A)
+   {"cobranca":"CB-03","valorCentavos":52000}
+   → 400 application/problem+json
+   {"type":"https://api.morada.example/problemas/chave-ausente","title":"Chave de idempotência ausente","status":400,"detail":"envie o cabeçalho Idempotency-Key com um identificador único do pedido"}
+
+9. outra chave para a cobrança já paga
+   POST /v1/pagamentos (Morada-Administradora: ADM-A, Idempotency-Key: 8d1f-02)
+   {"cobranca":"CB-02","valorCentavos":45000}
+   → 409 application/problem+json
+   {"type":"https://api.morada.example/problemas/cobranca-paga","title":"Cobrança já paga","status":409,"detail":"a cobrança CB-02 já foi paga"}
+
+10. valor diferente do valor da cobrança
+   POST /v1/pagamentos (Morada-Administradora: ADM-A, Idempotency-Key: 8d1f-03)
+   {"cobranca":"CB-03","valorCentavos":50000}
+   → 422 application/problem+json
+   {"type":"https://api.morada.example/problemas/valor-divergente","title":"Valor divergente","status":422,"detail":"a cobrança CB-03 vale 52000 centavos, e o pagamento informou 50000"}
+
+11. outra administradora pede as cobranças do C-01
+   GET /v1/condominios/C-01/cobrancas (Morada-Administradora: ADM-B)
+   → 404 application/problem+json
+   {"type":"https://api.morada.example/problemas/condominio-inexistente","title":"Condomínio não encontrado","status":404,"detail":"não existe o condomínio C-01"}
+
+12. outra administradora tenta pagar uma cobrança do C-01
+   POST /v1/pagamentos (Morada-Administradora: ADM-B, Idempotency-Key: 5c2e-01)
+   {"cobranca":"CB-03","valorCentavos":52000}
+   → 422 application/problem+json
+   {"type":"https://api.morada.example/problemas/cobranca-inexistente","title":"Cobrança não encontrada","status":422,"detail":"não existe a cobrança CB-03"}
+
+13. outra administradora usa a mesma chave da primeira, com o seu pedido
+   POST /v1/pagamentos (Morada-Administradora: ADM-B, Idempotency-Key: 8d1f-01)
+   {"cobranca":"CB-05","valorCentavos":38000}
+   → 201 application/json
+   {"id":"PG-0002","cobranca":"CB-05","valorCentavos":38000,"situacao":"confirmado"}
+
+14. pedido sem identificar a administradora
+   GET /v1/condominios/C-01/cobrancas
+   → 401 application/problem+json
+   {"type":"https://api.morada.example/problemas/nao-autenticado","title":"Cliente não identificado","status":401,"detail":"envie o token de acesso (aqui, o cabeçalho Morada-Administradora)"}

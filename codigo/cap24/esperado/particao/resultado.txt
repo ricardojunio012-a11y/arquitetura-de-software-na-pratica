@@ -1,0 +1,5 @@
+acessos na tabela: 529920
+acessos do condomínio 12 em outubro: partições lidas: acessos_2026_10
+acessos do condomínio 12, sem filtro de data: 6 partições lidas
+retenção: maio removido com DROP da partição (89280 linhas)
+acessos na tabela: 440640

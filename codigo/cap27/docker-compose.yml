@@ -1,0 +1,79 @@
+# Capítulo 27: fundamentos de sistemas distribuídos.
+services:
+  # O líder recebe as escritas
+  primario:
+    image: postgres:17-alpine
+    command: ["postgres", "-c", "wal_level=replica", "-c", "max_wal_senders=5"]
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    volumes:
+      - ./banco/primario.sh:/docker-entrypoint-initdb.d/primario.sh:ro
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada", "-h", "127.0.0.1"]
+      interval: 2s
+      retries: 30
+
+  # A rede entre o líder e a réplica passa por aqui, e o laboratório pode cortá-la
+  toxiproxy:
+    image: ghcr.io/shopify/toxiproxy:2.9.0
+    command: ["-host=0.0.0.0", "-config=/config/toxiproxy.json"]
+    volumes:
+      - ./banco/toxiproxy.json:/config/toxiproxy.json:ro
+    depends_on:
+      primario:
+        condition: service_healthy
+
+  # O seguidor, que recebe o log do líder pelo Toxiproxy
+  replica:
+    image: postgres:17-alpine
+    entrypoint: ["sh", "/replica.sh"]
+    environment:
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - ./banco/replica.sh:/replica.sh:ro
+    depends_on:
+      - toxiproxy
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada", "-h", "127.0.0.1"]
+      interval: 2s
+      retries: 60
+
+  # Uma segunda réplica, que o cenário "promocao" promove a líder durante a partição
+  candidata:
+    image: postgres:17-alpine
+    entrypoint: ["sh", "/candidata.sh"]
+    environment:
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - ./banco/candidata.sh:/candidata.sh:ro
+    depends_on:
+      - toxiproxy
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada", "-h", "127.0.0.1"]
+      interval: 2s
+      retries: 60
+
+  app:
+    build: ./node
+    image: morada-cap27-node
+    environment:
+      PRIMARIO_URL: postgresql://morada:morada@primario:5432/morada
+      REPLICA_URL: postgresql://morada:morada@replica:5432/morada
+      CANDIDATA_URL: postgresql://morada:morada@candidata:5432/morada
+      TOXIPROXY_URL: http://toxiproxy:8474
+    volumes:
+      - ./saida:/dados/saida
+    depends_on:
+      replica:
+        condition: service_healthy
+      candidata:
+        condition: service_healthy
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap27
+    working_dir: /cap27

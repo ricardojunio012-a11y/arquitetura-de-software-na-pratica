@@ -1,0 +1,6 @@
+antes do pagamento, na réplica: aberta
+o morador paga (gravado no primário)
+logo depois, lendo na réplica: aberta
+logo depois, lendo no primário: paga
+logo depois, lendo o que escreveu: paga (réplica atrasada; lido no primário)
+depois que a réplica alcançou: paga (lido na réplica)

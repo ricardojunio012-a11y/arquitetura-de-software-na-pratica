@@ -1,0 +1,31 @@
+== READ COMMITTED
+T1 e T2 começam
+T1 lê o saldo: 1.000,00
+T2 lê o saldo: 1.000,00
+T1 registra a saída de 700,00
+T2 registra a saída de 600,00
+T1 confirma
+T2 confirma
+saldo final: -300,00 (negativo: a regra foi violada)
+
+== REPEATABLE READ
+T1 e T2 começam
+T1 lê o saldo: 1.000,00
+T2 lê o saldo: 1.000,00
+T1 registra a saída de 700,00
+T2 registra a saída de 600,00
+T1 confirma
+T2 confirma
+saldo final: -300,00 (negativo: a regra foi violada)
+
+== SERIALIZABLE
+T1 e T2 começam
+T1 lê o saldo: 1.000,00
+T2 lê o saldo: 1.000,00
+T1 registra a saída de 700,00
+T2 registra a saída de 600,00
+T1 confirma
+T2 não confirma: falha de serialização; tenta de novo
+T2 lê o saldo: 300,00
+T2 recusa a saída de 600,00: saldo insuficiente
+saldo final: 300,00

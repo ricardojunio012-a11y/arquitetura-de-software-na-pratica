@@ -1,0 +1,4 @@
+cenário: sessao-redis
+1 login
+9 pedidos ao painel: 9 com status 200
+pedidos por réplica, com o login: 4, 3, 3

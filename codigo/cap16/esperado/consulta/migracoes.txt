@@ -1,0 +1,3 @@
+001_cobrancas.sql
+002_fundo_de_reserva.sql
+003_indice_inadimplencia.sql

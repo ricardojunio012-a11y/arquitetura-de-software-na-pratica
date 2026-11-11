@@ -1,0 +1,8 @@
+200 pedidos ao mesmo tempo, com a chave fora do cache:
+  sem proteção            200 consultas ao banco, todas as respostas iguais
+  promessa compartilhada    1 consulta ao banco, todas as respostas iguais
+  trava no Redis            1 consulta ao banco, todas as respostas iguais
+
+trava com prazo de 100 ms e uma carga de 200 ms:
+  apagar sem conferir     A apagou a trava de B
+  comparar e apagar (Lua) a trava de B continua com B

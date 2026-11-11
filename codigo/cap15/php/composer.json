@@ -1,0 +1,17 @@
+{
+    "name": "morada/cap15",
+    "description": "Capítulo 15: design de APIs",
+    "type": "project",
+    "require": {
+        "php": ">=8.3",
+        "symfony/yaml": "^7.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    },
+    "config": {
+        "platform": {
+            "php": "8.3.0"
+        }
+    }
+}

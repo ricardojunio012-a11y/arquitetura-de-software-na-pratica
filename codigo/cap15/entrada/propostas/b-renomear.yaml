@@ -1,0 +1,164 @@
+# Proposta B: renomear valorCentavos para valor na cobrança.
+openapi: 3.1.0
+info:
+  title: API pública do Morada
+  version: "1.0"
+paths:
+  /v1/condominios/{condominio}/cobrancas:
+    get:
+      operationId: listarCobrancas
+      summary: Lista as cobranças de um condomínio, em ordem de identificador
+      security:
+        - administradora: ["cobrancas:ler"]
+      parameters:
+        - name: condominio
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: situacao
+          in: query
+          schema:
+            type: string
+            enum: [aberta, paga]
+        - name: limite
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+        - name: cursor
+          in: query
+          description: Valor de "proximo" da página anterior
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Uma página de cobranças
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginaDeCobrancas"
+        "400":
+          $ref: "#/components/responses/Problema"
+        "401":
+          $ref: "#/components/responses/Problema"
+        "404":
+          $ref: "#/components/responses/Problema"
+  /v1/pagamentos:
+    post:
+      operationId: registrarPagamento
+      summary: Registra o pagamento de uma cobrança
+      security:
+        - administradora: ["pagamentos:escrever"]
+      parameters:
+        - name: Idempotency-Key
+          in: header
+          required: true
+          description: Identificador do pedido, gerado pelo cliente; repetir é seguro
+          schema:
+            type: string
+            maxLength: 255
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NovoPagamento"
+      responses:
+        "201":
+          description: Pagamento registrado (ou o mesmo pagamento, num pedido repetido)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pagamento"
+        "400":
+          $ref: "#/components/responses/Problema"
+        "401":
+          $ref: "#/components/responses/Problema"
+        "409":
+          $ref: "#/components/responses/Problema"
+        "422":
+          $ref: "#/components/responses/Problema"
+components:
+  schemas:
+    Cobranca:
+      type: object
+      required: [id, unidade, vencimento, valor, situacao]
+      properties:
+        id:
+          type: string
+        unidade:
+          type: string
+        vencimento:
+          type: string
+          format: date
+        valor:
+          type: integer
+        situacao:
+          type: string
+          enum: [aberta, paga]
+    PaginaDeCobrancas:
+      type: object
+      required: [dados, proximo]
+      properties:
+        dados:
+          type: array
+          items:
+            $ref: "#/components/schemas/Cobranca"
+        proximo:
+          type: [string, "null"]
+    NovoPagamento:
+      type: object
+      required: [cobranca, valorCentavos]
+      properties:
+        cobranca:
+          type: string
+        valorCentavos:
+          type: integer
+          minimum: 1
+    Pagamento:
+      type: object
+      required: [id, cobranca, valorCentavos, situacao]
+      properties:
+        id:
+          type: string
+        cobranca:
+          type: string
+        valorCentavos:
+          type: integer
+        situacao:
+          type: string
+          enum: [confirmado]
+    Problema:
+      description: Detalhes de um erro, no formato da RFC 9457
+      type: object
+      required: [type, title, status]
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+  responses:
+    Problema:
+      description: Erro no formato da RFC 9457
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problema"
+  securitySchemes:
+    # OAuth 2.0 com client credentials: cada administradora tem as suas credenciais
+    # e pede um token só com os escopos de que precisa
+    administradora:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.morada.example/oauth/token
+          scopes:
+            "cobrancas:ler": Ler as cobranças dos condomínios da administradora
+            "pagamentos:escrever": Registrar pagamentos de cobranças

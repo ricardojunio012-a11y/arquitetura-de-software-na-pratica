@@ -1,0 +1,17 @@
+o orquestrador caiu durante a compensação, depois de desativar o tenant
+saga compensada
+histórico do orquestrador:
+  concluído: contrato
+  concluído: cobranca
+  concluído: provisionamento
+  importacao falhou: linha 37: CPF inválido (123.741.084-31)
+  retomada durante a compensação
+  compensado: provisionamento
+  compensado: cobranca
+  compensado: contrato
+estado final nos serviços:
+  contrato:     cancelado
+  lançamentos:  cobranca R$ 890,00; estorno R$ 890,00
+  tenant:       desativado
+  moradores:    0
+  boas-vindas:  não enviado

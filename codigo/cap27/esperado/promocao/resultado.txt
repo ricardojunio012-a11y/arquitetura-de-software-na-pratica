@@ -1,0 +1,11 @@
+promoção durante a partição
+antes: líder 22h, candidata 22h
+a rede entre o líder e a candidata é cortada
+escrita no líder antigo (23h): confirmada ao síndico
+a candidata é promovida a líder: sim
+escrita no novo líder (21h): confirmada a outro usuário
+dois líderes: o antigo diz 23h, o novo diz 21h
+a rede volta
+a candidata voltou a seguir o líder antigo? não (está numa nova linha do tempo)
+o sistema passa a seguir o novo líder: 21h
+a escrita de 23h, confirmada ao síndico, se perdeu

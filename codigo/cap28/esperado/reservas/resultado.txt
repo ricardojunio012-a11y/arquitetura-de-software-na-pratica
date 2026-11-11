@@ -1,0 +1,4 @@
+20 pedidos simultâneos para a churrasqueira no sábado à tarde
+  confere e insere       mais de uma reserva para o mesmo horário
+  bloqueio otimista      1 reserva; 19 pedidos recusados
+  restrição de exclusão  1 reserva; 19 pedidos recusados

@@ -1,0 +1,17 @@
+{
+  "descricao": "A suíte de avaliação: cada caso diz o que a resposta precisa conter. 'nao_sabe' quer dizer que o certo é o assistente dizer que não encontrou a informação.",
+  "casos": [
+    { "condominio": 12, "pergunta": "Qual é o horário de silêncio?", "deveConter": "22h às 8h" },
+    { "condominio": 12, "pergunta": "Quanto custa reservar o salão de festas?", "deveConter": "R$ 180,00" },
+    { "condominio": 12, "pergunta": "Com quantos dias de antecedência reservo o salão de festas?", "deveConter": "15 dias" },
+    { "condominio": 12, "pergunta": "Quantos convidados posso levar à piscina?", "deveConter": "quatro convidados" },
+    { "condominio": 12, "pergunta": "Como foi aprovado o custo da reforma da fachada?", "deveConter": "seis parcelas" },
+    { "condominio": 15, "pergunta": "Qual é a taxa de reserva da churrasqueira?", "deveConter": "R$ 50,00" },
+    { "condominio": 15, "pergunta": "Posso fazer mudança no sábado?", "deveConter": "até as 14h" },
+    { "condominio": 20, "pergunta": "Qual é o horário da academia?", "deveConter": "6h às 23h" },
+    { "condominio": 12, "pergunta": "Qual é a taxa de reserva da churrasqueira?", "deveConter": "nao_sabe" },
+    { "condominio": 20, "pergunta": "Qual é a taxa de reserva do salão de festas?", "deveConter": "nao_sabe" },
+    { "condominio": 15, "pergunta": "A taxa de condomínio está isenta?", "deveConter": "nao_sabe" },
+    { "condominio": 12, "pergunta": "Quem é o melhor jogador de futebol do mundo?", "deveConter": "nao_sabe" }
+  ]
+}

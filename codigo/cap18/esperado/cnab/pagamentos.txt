@@ -1,0 +1,7 @@
+pagamentos recebidos:
+  C-202 paga em 2026-11-04: R$ 450,00, tarifa R$ 2,50
+  C-203 paga em 2026-11-04: R$ 535,60, tarifa R$ 2,50
+  C-205 paga em 2026-11-05: R$ 380,00, tarifa R$ 2,50
+ocorrências que não são pagamento:
+  C-201: entrada confirmada
+  C-204: baixa

@@ -1,0 +1,26 @@
+execução 1: pelo texto 10 de 12, pelo conteúdo 11 de 12
+       [12] Quanto custa reservar o salão de festas?
+         respondeu: A reserva do salão de festas deve ser feita com pelo menos 15 dias de antecedência, pelo aplicativo. (regimento)
+execução 2: pelo texto 9 de 12, pelo conteúdo 10 de 12
+       [12] Quanto custa reservar o salão de festas?
+         respondeu: Não encontrei essa informação nos documentos do condomínio.
+       [15] A taxa de condomínio está isenta?
+         respondeu: A assembleia de abril de 2026 manteve o valor da taxa de condomínio e aprovou um reajuste de 4% a partir de julho. (ata-2026-04)
+execução 3: pelo texto 9 de 12, pelo conteúdo 11 de 12
+       [12] Quanto custa reservar o salão de festas?
+         respondeu: A reserva do salão de festas deve ser feita com pelo menos 15 dias de antecedência, pelo aplicativo. (regimento)
+execução 4: pelo texto 8 de 12, pelo conteúdo 11 de 12
+       [12] Quanto custa reservar o salão de festas?
+         respondeu: Não encontrei essa informação nos documentos do condomínio.
+execução 5: pelo texto 9 de 12, pelo conteúdo 10 de 12
+       [12] Quanto custa reservar o salão de festas?
+         respondeu: Não encontrei essa informação nos documentos do condomínio.
+       [15] A taxa de condomínio está isenta?
+         respondeu: A assembleia de abril de 2026 manteve o valor da taxa de condomínio e aprovou um reajuste de 4% a partir de julho. (ata-2026-04)
+
+pelo texto:    mínimo 8, máximo 10, média 9,0
+pelo conteúdo: mínimo 10, máximo 11, média 10,6
+
+casos que falharam pelo conteúdo, em quantas das execuções:
+  5 de 5  [12] Quanto custa reservar o salão de festas?
+  2 de 5  [15] A taxa de condomínio está isenta?

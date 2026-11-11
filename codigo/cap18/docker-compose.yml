@@ -1,0 +1,16 @@
+# Capítulo 18: arquitetura de integração.
+services:
+  # O webhook do gateway de pagamento e o retorno CNAB do banco
+  app:
+    build: ./node
+    image: morada-cap18-node
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./saida:/dados/saida
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap18
+    working_dir: /cap18

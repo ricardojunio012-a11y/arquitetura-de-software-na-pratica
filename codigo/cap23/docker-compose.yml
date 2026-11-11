@@ -1,0 +1,38 @@
+# Capítulo 23: cache e CDN.
+services:
+  # O painel financeiro do síndico, com cache no Redis
+  app:
+    build: ./node
+    image: morada-cap23-node
+    environment:
+      BANCO_URL: postgresql://morada:morada@banco:5432/morada
+      REDIS_URL: redis://redis:6379
+    volumes:
+      - ./sql:/dados/sql:ro
+      - ./saida:/dados/saida
+    depends_on:
+      banco:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+  banco:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  redis:
+    image: redis:7.4-alpine
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap23
+    working_dir: /cap23

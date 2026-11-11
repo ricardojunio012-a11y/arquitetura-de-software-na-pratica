@@ -1,0 +1,4 @@
+sem rede: acessos 4 a 7 na fila local (4 pendentes)
+a rede voltou: fila local esvaziada (0 pendentes)
+o servidor recebeu 10 acessos, na ordem: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+repetições ignoradas: 1

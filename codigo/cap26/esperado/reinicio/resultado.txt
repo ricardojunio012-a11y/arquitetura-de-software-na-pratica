@@ -1,0 +1,9 @@
+== fila em memória
+o dispositivo registrou 3 acessos sem rede e morreu (SIGKILL)
+acessos na fila depois de religar: 0
+o servidor recebeu: nenhum
+
+== fila em arquivo SQLite
+o dispositivo registrou 3 acessos sem rede e morreu (SIGKILL)
+acessos na fila depois de religar: 3
+o servidor recebeu: 21, 22, 23

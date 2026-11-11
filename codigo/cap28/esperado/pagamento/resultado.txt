@@ -1,0 +1,4 @@
+sem chave de idempotência
+  2 pagamento(s) da C-301; as duas respostas trazem pagamentos diferentes
+com a mesma chave nos dois toques
+  1 pagamento(s) da C-302; as duas respostas trazem o mesmo pagamento

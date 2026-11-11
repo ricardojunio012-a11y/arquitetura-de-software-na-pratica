@@ -1,0 +1,8 @@
+condominios: 40 linhas extraídas
+moradores: 5380 linhas extraídas
+veiculos: 1793 linhas extraídas
+cobrancas: 32280 linhas extraídas
+amostra de dim_morador:
+  1 | b55b91f695f4b8fe
+  2 | 464f9db116b47124
+  3 | f6c8da4a33ef0dcf

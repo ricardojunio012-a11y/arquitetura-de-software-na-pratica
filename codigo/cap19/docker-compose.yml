@@ -1,0 +1,36 @@
+# Capítulo 19: arquitetura de dados analíticos.
+services:
+  # O pipeline ELT: do PostgreSQL do Morada para um banco analítico DuckDB
+  app:
+    build: ./node
+    image: morada-cap19-node
+    environment:
+      BANCO_URL: postgresql://morada:morada@banco:5432/morada
+      # Chave da pseudonimização: no mundo real, num cofre de segredos (capítulo 36)
+      CHAVE_PSEUDONIMO: chave-de-teste-do-laboratorio
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./sql:/dados/sql:ro
+      - ./saida:/dados/saida
+    depends_on:
+      banco:
+        condition: service_healthy
+
+  # O banco transacional do Morada (OLTP)
+  banco:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap19
+    working_dir: /cap19

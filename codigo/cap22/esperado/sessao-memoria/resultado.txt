@@ -1,0 +1,4 @@
+cenário: sessao-memoria
+1 login
+9 pedidos ao painel: 3 com status 200, 6 com status 401
+pedidos por réplica, com o login: 4, 3, 3

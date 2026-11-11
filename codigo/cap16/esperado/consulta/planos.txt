@@ -1,0 +1,8 @@
+1. sem índice
+   Seq Scan em cobrancas: 22 linhas aproveitadas, 999978 descartadas
+
+2. índice só no vencimento
+   Seq Scan em cobrancas: 22 linhas aproveitadas, 999978 descartadas
+
+3. índice da migração 003
+   Index Scan em cobrancas pelo índice cobrancas_inadimplencia: 22 linhas aproveitadas, 0 descartadas

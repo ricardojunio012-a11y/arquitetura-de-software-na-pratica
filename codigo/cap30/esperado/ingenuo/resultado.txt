@@ -1,0 +1,7 @@
+falhou: linha 37: CPF inválido (123.741.084-31)
+estado final nos serviços:
+  contrato:     assinado
+  lançamentos:  cobranca R$ 890,00
+  tenant:       ativo
+  moradores:    0
+  boas-vindas:  não enviado

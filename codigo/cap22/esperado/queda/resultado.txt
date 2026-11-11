@@ -1,0 +1,6 @@
+cenário: queda
+1 login
+depois do 10º pedido: api2 deixa de aceitar conexões
+30 pedidos ao painel: 30 com status 200
+antes da queda, pedidos por réplica (com o login): 4, 4, 3
+depois da queda: api2 atendeu 0; api1 e api3 atenderam 20

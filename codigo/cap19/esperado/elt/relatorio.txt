@@ -1,0 +1,13 @@
+inadimplência por região e porte (cobranças de abril a setembro de 2026)
+região         porte    cobranças  em aberto  inadimpl.
+Centro-Oeste   pequeno      324         58    17,9%
+Centro-Oeste   médio       2862        386    13,0%
+Nordeste       pequeno      492         53    10,1%
+Nordeste       grande      8951       1101    12,1%
+Norte          médio       1632        156    10,0%
+Norte          grande      4218        571    14,3%
+Sudeste        pequeno     1014        105     9,3%
+Sudeste        médio       1403        193    13,4%
+Sudeste        grande      5358        770    14,3%
+Sul            médio       4104        538    13,8%
+Sul            grande      1919        323    17,4%

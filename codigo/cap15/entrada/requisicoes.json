@@ -1,0 +1,100 @@
+[
+  {
+    "descricao": "primeira página das cobranças em aberto",
+    "metodo": "GET",
+    "caminho": "/v1/condominios/C-01/cobrancas?situacao=aberta&limite=2",
+    "administradora": "ADM-A"
+  },
+  {
+    "descricao": "segunda página, com o cursor da primeira",
+    "metodo": "GET",
+    "caminho": "/v1/condominios/C-01/cobrancas?situacao=aberta&limite=2&cursor=Q0ItMDM",
+    "administradora": "ADM-A"
+  },
+  {
+    "descricao": "limite fora do permitido",
+    "metodo": "GET",
+    "caminho": "/v1/condominios/C-01/cobrancas?limite=500",
+    "administradora": "ADM-A"
+  },
+  {
+    "descricao": "condomínio que não existe",
+    "metodo": "GET",
+    "caminho": "/v1/condominios/C-99/cobrancas",
+    "administradora": "ADM-A"
+  },
+  {
+    "descricao": "pagamento da cobrança CB-02",
+    "metodo": "POST",
+    "caminho": "/v1/pagamentos",
+    "administradora": "ADM-A",
+    "chave": "8d1f-01",
+    "corpo": { "cobranca": "CB-02", "valorCentavos": 45000 }
+  },
+  {
+    "descricao": "o mesmo pedido, repetido depois de um tempo esgotado",
+    "metodo": "POST",
+    "caminho": "/v1/pagamentos",
+    "administradora": "ADM-A",
+    "chave": "8d1f-01",
+    "corpo": { "cobranca": "CB-02", "valorCentavos": 45000 }
+  },
+  {
+    "descricao": "a mesma chave com outro valor",
+    "metodo": "POST",
+    "caminho": "/v1/pagamentos",
+    "administradora": "ADM-A",
+    "chave": "8d1f-01",
+    "corpo": { "cobranca": "CB-02", "valorCentavos": 40000 }
+  },
+  {
+    "descricao": "pagamento sem chave de idempotência",
+    "metodo": "POST",
+    "caminho": "/v1/pagamentos",
+    "administradora": "ADM-A",
+    "corpo": { "cobranca": "CB-03", "valorCentavos": 52000 }
+  },
+  {
+    "descricao": "outra chave para a cobrança já paga",
+    "metodo": "POST",
+    "caminho": "/v1/pagamentos",
+    "administradora": "ADM-A",
+    "chave": "8d1f-02",
+    "corpo": { "cobranca": "CB-02", "valorCentavos": 45000 }
+  },
+  {
+    "descricao": "valor diferente do valor da cobrança",
+    "metodo": "POST",
+    "caminho": "/v1/pagamentos",
+    "administradora": "ADM-A",
+    "chave": "8d1f-03",
+    "corpo": { "cobranca": "CB-03", "valorCentavos": 50000 }
+  },
+  {
+    "descricao": "outra administradora pede as cobranças do C-01",
+    "metodo": "GET",
+    "caminho": "/v1/condominios/C-01/cobrancas",
+    "administradora": "ADM-B"
+  },
+  {
+    "descricao": "outra administradora tenta pagar uma cobrança do C-01",
+    "metodo": "POST",
+    "caminho": "/v1/pagamentos",
+    "administradora": "ADM-B",
+    "chave": "5c2e-01",
+    "corpo": { "cobranca": "CB-03", "valorCentavos": 52000 }
+  },
+  {
+    "descricao": "outra administradora usa a mesma chave da primeira, com o seu pedido",
+    "metodo": "POST",
+    "caminho": "/v1/pagamentos",
+    "administradora": "ADM-B",
+    "chave": "8d1f-01",
+    "corpo": { "cobranca": "CB-05", "valorCentavos": 38000 }
+  },
+  {
+    "descricao": "pedido sem identificar a administradora",
+    "metodo": "GET",
+    "caminho": "/v1/condominios/C-01/cobrancas"
+  }
+]

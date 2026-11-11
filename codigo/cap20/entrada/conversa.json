@@ -1,0 +1,15 @@
+{
+  "descricao": "Perguntas feitas ao Assistente do síndico, na ordem em que chegam. O condomínio 20 tem um orçamento diário pequeno, para mostrar o limite de custo.",
+  "orcamentoDiarioTokens": { "12": 2000, "15": 2000, "20": 250 },
+  "perguntas": [
+    { "condominio": 12, "pergunta": "Qual é o horário de silêncio?" },
+    { "condominio": 12, "pergunta": "Qual é o horário de silêncio?" },
+    { "condominio": 12, "pergunta": "Qual é a taxa de reserva do salão de festas?" },
+    { "condominio": 12, "pergunta": "Qual é o horário da churrasqueira?" },
+    { "condominio": 15, "pergunta": "A taxa de condomínio está isenta?" },
+    { "condominio": 15, "pergunta": "Posso fazer mudança no sábado?" },
+    { "condominio": 20, "pergunta": "Qual é o horário da academia?" },
+    { "condominio": 20, "pergunta": "Quantas bicicletas posso guardar no bicicletário?" },
+    { "condominio": 20, "pergunta": "Qual é o horário de silêncio?" }
+  ]
+}

@@ -1,0 +1,10 @@
+27 cobranças de 9 condomínios em 3 bancos
+  shard0: 9 cobranças, condomínios 1, 2, 3
+  shard1: 12 cobranças, condomínios 4, 5, 6, 7
+  shard2: 6 cobranças, condomínios 8, 9
+cobranças do condomínio 7: 3, consultando só o shard1
+em aberto em todos os condomínios: R$ 4.050,00, consultando 3 bancos
+um ID do condomínio 7: 215620780032007186
+  criado em 2026-10-25T12:00:00.000Z, shard lógico 7, sequência 18
+shard lógico 7 movido para o shard2 (3 cobranças copiadas)
+cobranças do condomínio 7: 3, consultando só o shard2

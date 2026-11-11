@@ -1,0 +1,6 @@
+ok      cobrança única no fato
+ok      todo condomínio do fato existe na dimensão
+ok      todo condomínio tem região
+FALHOU  valor positivo nas cobranças de origem: 3 linhas
+ok      origem = fato + quarentena
+ok      nenhum CPF ou placa em claro no banco analítico

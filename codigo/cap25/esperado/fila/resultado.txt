@@ -1,0 +1,5 @@
+3000 condomínios enfileirados, 16 workers
+um worker morreu com a tarefa 100 na mão
+um worker lento tentou concluir a tarefa 200, já refeita: barrado (token de posse)
+tarefas feitas: 3000; refeitas depois do prazo de visibilidade: 2
+boletos gerados: 329895 (esperados: 329895)

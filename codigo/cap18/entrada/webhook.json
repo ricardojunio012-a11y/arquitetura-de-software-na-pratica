@@ -1,0 +1,52 @@
+{
+  "descricao": "Entregas do webhook do gateway de pagamento, na ordem em que chegam ao Morada. O gateway assina cada entrega no formato Standard Webhooks. 'falha' simula o que acontece na rede: um reenvio da mesma mensagem, uma entrega com assinatura falsa e a repetição de uma mensagem antiga.",
+  "segredo": "whsec_c2VncmVkby1kZS10ZXN0ZS1kby1nYXRld2F5LW1vcmFkYQ==",
+  "agora": 1793880000,
+  "cobrancas": [
+    { "cobranca": "C-101", "situacao": "aberta", "versao": 1 },
+    { "cobranca": "C-102", "situacao": "aberta", "versao": 1 },
+    { "cobranca": "C-103", "situacao": "aberta", "versao": 1 },
+    { "cobranca": "C-104", "situacao": "aberta", "versao": 1 },
+    { "cobranca": "C-105", "situacao": "estornada", "versao": 3 }
+  ],
+  "entregas": [
+    {
+      "id": "msg_01",
+      "segundosAtras": 40,
+      "evento": { "tipo": "cobranca.paga", "cobranca": "C-101", "valorCentavos": 45000, "versao": 2 }
+    },
+    {
+      "id": "msg_01",
+      "segundosAtras": 10,
+      "falha": "reenvio",
+      "evento": { "tipo": "cobranca.paga", "cobranca": "C-101", "valorCentavos": 45000, "versao": 2 }
+    },
+    {
+      "id": "msg_02",
+      "segundosAtras": 35,
+      "evento": { "tipo": "cobranca.paga", "cobranca": "C-102", "valorCentavos": 52000, "versao": 2 }
+    },
+    {
+      "id": "msg_04",
+      "segundosAtras": 20,
+      "evento": { "tipo": "cobranca.estornada", "cobranca": "C-103", "valorCentavos": 38000, "versao": 3 }
+    },
+    {
+      "id": "msg_03",
+      "segundosAtras": 30,
+      "evento": { "tipo": "cobranca.paga", "cobranca": "C-103", "valorCentavos": 38000, "versao": 2 }
+    },
+    {
+      "id": "msg_05",
+      "segundosAtras": 15,
+      "falha": "assinatura-falsa",
+      "evento": { "tipo": "cobranca.paga", "cobranca": "C-104", "valorCentavos": 61000, "versao": 2 }
+    },
+    {
+      "id": "msg_06",
+      "segundosAtras": 3600,
+      "falha": "mensagem-antiga",
+      "evento": { "tipo": "cobranca.paga", "cobranca": "C-105", "valorCentavos": 45000, "versao": 2 }
+    }
+  ]
+}

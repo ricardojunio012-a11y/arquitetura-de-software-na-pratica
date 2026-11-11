@@ -1,0 +1,10 @@
+== sem contrapressão nos workers
+tarefas feitas: 3050 (3000 mensais + 50 segundas vias)
+as segundas vias terminaram antes do fim das mensais: sim
+recusas do banco emissor: houve
+
+== com contrapressão nos workers
+tarefas feitas: 3050 (3000 mensais + 50 segundas vias)
+as segundas vias terminaram antes do fim das mensais: sim
+recusas do banco emissor: nenhuma
+

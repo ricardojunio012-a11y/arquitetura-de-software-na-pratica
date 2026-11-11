@@ -1,0 +1,34 @@
+# Capítulo 20: arquitetura de sistemas com IA.
+services:
+  # O Assistente do síndico: RAG com pgvector, avaliação, custo e isolamento
+  app:
+    build: ./node
+    image: morada-cap20-node
+    environment:
+      BANCO_URL: postgresql://morada:morada@banco:5432/morada
+    volumes:
+      - ./entrada:/dados/entrada:ro
+      - ./sql:/dados/sql:ro
+      - ./saida:/dados/saida
+    depends_on:
+      banco:
+        condition: service_healthy
+
+  # PostgreSQL com a extensão pgvector
+  banco:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compara a saída com o resultado aprovado
+  ferramentas:
+    build: ./ferramentas
+    volumes:
+      - ./:/cap20
+    working_dir: /cap20
